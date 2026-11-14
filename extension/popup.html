@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Megascans Claimer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="brand">
+      <img class="logo" src="icons/48.png" alt="" width="32" height="32">
+      <div class="brand-text">
+        <h1 data-i18n="appName">Megascans Claimer</h1>
+        <p class="sub" data-i18n="tagline"></p>
+      </div>
+    </div>
+    <div class="lang">
+      <button id="langBtn" class="lang-btn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="langFlag" class="flag-box"></span>
+        <span id="langChevron" class="chev"></span>
+      </button>
+      <div id="langMenu" class="lang-menu" role="listbox" hidden></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-top">
+      <span id="pill" class="pill"></span>
+    </div>
+    <div class="big">
+      <b id="confirmed">0</b>
+      <span data-i18n="stat_added"></span>
+    </div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="grid">
+      <div class="stat"><span class="ico" data-icon="library"></span><div><b id="owned">0</b><span data-i18n="stat_owned"></span></div></div>
+      <div class="stat"><span class="ico warnish" data-icon="rotateCcw"></span><div><b id="failed">0</b><span data-i18n="stat_failed"></span></div></div>
+      <div class="stat"><span class="ico" data-icon="clock"></span><div><b id="time">0:00</b><span data-i18n="stat_time"></span></div></div>
+      <div class="stat"><span class="ico" data-icon="hourglass"></span><div><b id="eta">—</b><span data-i18n="stat_eta"></span></div></div>
+    </div>
+  </section>
+
+  <p id="msg" class="msg"><span class="ico" data-icon="info"></span><span id="msgText"></span></p>
+  <p id="warn" class="warn" hidden><span class="ico" data-icon="alert"></span><span id="warnText"></span></p>
+
+  <section id="actions" class="actions"></section>
+
+  <details class="tips">
+    <summary><span class="ico" data-icon="sparkles"></span><span data-i18n="tips_title"></span><span class="chev" data-icon="chevronDown"></span></summary>
+    <ul>
+      <li><span class="ico" data-icon="logIn"></span><span data-i18n-html="tip1"></span></li>
+      <li><span class="ico" data-icon="eyeOff"></span><span data-i18n-html="tip2"></span></li>
+      <li><span class="ico" data-icon="monitor"></span><span data-i18n-html="tip3"></span></li>
+      <li><span class="ico" data-icon="download"></span><span data-i18n-html="tip4"></span></li>
+    </ul>
+  </details>
+
+  <footer>
+    <button id="reset" class="link"><span class="ico" data-icon="rotateCcw"></span><span data-i18n="reset"></span></button>
+    <button id="copy" class="link"><span class="ico" data-icon="copy"></span><span id="copyText" data-i18n="copy_failed"></span></button>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="icons.js"></script>
+  <script src="flags.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

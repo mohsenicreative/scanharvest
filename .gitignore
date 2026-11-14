@@ -1,0 +1,12 @@
+# build output
+dist/
+
+# local tooling
+.claude/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+# third-party paid script kept locally for reference only; never publish it
+fab-megascans-claimer-v2.js

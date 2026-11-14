@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check tag matches manifest version
+        run: |
+          version=$(node -p "require('./extension/manifest.json').version")
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match manifest version $version" >&2
+            exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Consistency checks
+        run: node tools/check.mjs
+
+      - name: Build zip
+        run: |
+          mkdir -p build/MegascansClaimer
+          cp -r extension/. build/MegascansClaimer/
+          cp LICENSE THIRD_PARTY_NOTICES.md build/MegascansClaimer/
+          (cd build && zip -r -X ../MegascansClaimer.zip MegascansClaimer)
+          sha256sum MegascansClaimer.zip > MegascansClaimer.zip.sha256
+
+      - name: Release notes from CHANGELOG
+        run: |
+          awk -v v="$VERSION" '
+            index($0, "## [" v "]") == 1 { on = 1; next }
+            on && /^## \[/ { exit }
+            on && /^\[/ { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          {
+            echo
+            echo "### Install"
+            echo "Download **MegascansClaimer.zip**, extract it, open \`chrome://extensions\` or \`edge://extensions\`, turn on Developer mode and choose **Load unpacked**."
+            echo "Step-by-step guide in 6 languages: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+          } >> notes.md
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" MegascansClaimer.zip MegascansClaimer.zip.sha256 \
+            --title "Megascans Claimer $GITHUB_REF_NAME" \
+            --notes-file notes.md \
+            --verify-tag

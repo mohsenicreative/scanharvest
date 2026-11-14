@@ -1,0 +1,40 @@
+<!doctype html>
+<!--
+  On-page panel preview for development and screenshots. Serve the repo root over HTTP, then open:
+    /tools/overlay-preview.html?state=running|finished&lang=en|fa|fr|de|es|zh
+  The real panel shows the live Fab page in the workspace frame; here it shows a placeholder.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel preview</title>
+  <style>html, body { margin: 0; background: #0b0b0f; height: 100%; }</style>
+</head>
+<body>
+<script src="preview-stub.js"></script>
+<script>
+(async () => {
+  // Open the closed shadow root so the preview can fill the workspace frame.
+  const attach = Element.prototype.attachShadow;
+  Element.prototype.attachShadow = function () { return attach.call(this, { mode: 'open' }); };
+
+  let listener = null;
+  chrome.runtime = { onMessage: { addListener: fn => { listener = fn; } }, sendMessage: async () => 1 };
+
+  const v = Date.now();
+  for (const name of ['i18n', 'icons', 'selectors', 'content']) {
+    await new Promise(resolve => {
+      const s = document.createElement('script');
+      s.src = `../extension/${name}.js?v=${v}`;
+      s.onload = resolve;
+      document.body.append(s);
+    });
+  }
+  await new Promise(resolve => listener({ cmd: 'show' }, {}, resolve));
+  const root = document.getElementById('megascans-claimer-root').shadowRoot;
+  root.querySelector('iframe').srcdoc = `<body style="margin:0;height:100vh;display:grid;place-items:center;background:#0f0f12;color:#5c6070;font:14px system-ui">fab.com loads here while the claimer works</body>`;
+})();
+</script>
+</body>
+</html>

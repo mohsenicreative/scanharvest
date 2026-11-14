@@ -1,0 +1,45 @@
+name: Problem report
+description: Something doesn't work, or Fab changed its page.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please never paste passwords, tokens or cookies here.
+        You can write in English, فارسی, Français, Deutsch, Español or 中文.
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: Shown on chrome://extensions or edge://extensions.
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options: [Google Chrome, Microsoft Edge, Other Chromium browser]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: The message shown in the panel or popup, and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the extension
+        2. Click "Open Fab Megascans & start"
+        3. ...
+  - type: textarea
+    id: failed
+    attributes:
+      label: Items that need a retry (optional)
+      description: Use "Copy items that need a retry" in the popup and paste here.
+      render: text

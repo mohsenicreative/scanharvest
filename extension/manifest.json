@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "short_name": "Megascans Claimer",
+  "version": "1.0.0",
+  "description": "__MSG_extDescription__",
+  "default_locale": "en",
+  "homepage_url": "https://github.com/mohsenicreative/megascans-claimer",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "notifications"],
+  "host_permissions": ["https://www.fab.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "Megascans Claimer",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.fab.com/*"],
+      "js": ["i18n.js", "icons.js", "selectors.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
