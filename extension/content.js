@@ -1,5 +1,5 @@
 /*
- * Megascans Claimer — content script for www.fab.com.
+ * ScanHarvest — content script for www.fab.com.
  *
  * Architecture
  *   Workspace  an iframe inside our panel; navigates with load events.
@@ -13,8 +13,8 @@
  * Nothing here reads or sends credentials; it only presses Fab's own buttons.
  */
 (() => {
-  if (window.top !== window || globalThis.__megascansClaimer) return;
-  globalThis.__megascansClaimer = true;
+  if (window.top !== window || globalThis.__scanHarvest) return;
+  globalThis.__scanHarvest = true;
 
   const M = globalThis.MSC;
   const I18N = globalThis.I18N;
@@ -454,7 +454,7 @@
 
     session.run()
       .catch(problem => {
-        console.warn('[Megascans Claimer]', problem);
+        console.warn('[ScanHarvest]', problem);
         progress.status = problem instanceof Problem ? problem.status : 'paused';
         progress.msg = { k: problem instanceof Problem ? problem.key : 'e_unknown' };
       })
@@ -558,7 +558,7 @@
 
     function build() {
       host = document.createElement('div');
-      host.id = 'megascans-claimer-root';
+      host.id = 'scanharvest-root';
       root = host.attachShadow({ mode: 'closed' });
       root.innerHTML = `
         <style>${css}</style>

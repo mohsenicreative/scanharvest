@@ -1,4 +1,4 @@
-// Megascans Claimer — background worker: toolbar badge, notifications, tab bookkeeping.
+// ScanHarvest — background worker: toolbar badge, notifications, tab bookkeeping.
 importScripts('i18n.js');
 
 const STALE_MS = 15000; // a "running" state without a heartbeat for this long is treated as interrupted

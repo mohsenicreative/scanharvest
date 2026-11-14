@@ -32,7 +32,7 @@
     });
   }
   await new Promise(resolve => listener({ cmd: 'show' }, {}, resolve));
-  const root = document.getElementById('megascans-claimer-root').shadowRoot;
+  const root = document.getElementById('scanharvest-root').shadowRoot;
   root.querySelector('iframe').srcdoc = `<body style="margin:0;height:100vh;display:grid;place-items:center;background:#0f0f12;color:#5c6070;font:14px system-ui">fab.com loads here while the claimer works</body>`;
 })();
 </script>

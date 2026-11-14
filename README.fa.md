@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/images/icon-128.png" width="96" height="96" alt="لوگوی Megascans Claimer">
+<img src="docs/images/icon-128.png" width="96" height="96" alt="لوگوی ScanHarvest">
 
-# دریافت‌کننده Megascans
+# ScanHarvest
 
 **همه دارایی‌های رایگان Quixel Megascans در Fab را بدون هزاران کلیک به کتابخانه خود اضافه کنید.**
 
@@ -13,14 +13,14 @@
 <a href="README.es.md"><img src="docs/images/flags/es.svg" width="24" height="16" alt=""> Español</a> ·
 <a href="README.zh-CN.md"><img src="docs/images/flags/zh.svg" width="24" height="16" alt=""> 中文</a>
 
-[![Latest release](https://img.shields.io/github/v/release/mohsenicreative/megascans-claimer?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/megascans-claimer/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/mohsenicreative/scanharvest?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/scanharvest/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-8b9cff?style=flat-square)](LICENSE)
 
-[**دانلود**](https://github.com/mohsenicreative/megascans-claimer/releases/latest/download/MegascansClaimer.zip) ·
-[**راهنمای دانشجو**](https://mohsenicreative.github.io/megascans-claimer/?lang=fa) ·
-[گزارش مشکل](https://github.com/mohsenicreative/megascans-claimer/issues)
+[**دانلود**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip) ·
+[**راهنمای دانشجو**](https://mohsenicreative.github.io/scanharvest/?lang=fa) ·
+[گزارش مشکل](https://github.com/mohsenicreative/scanharvest/issues)
 
-<img src="docs/images/popup-fa.png" width="300" alt="پنجره افزونه به زبان فارسی">
+<img src="docs/images/banner.png" alt="ScanHarvest" width="900">
 
 </div>
 
@@ -28,7 +28,7 @@
 
 ## چرا؟
 
-Epic کل مجموعه Quixel Megascans را در Fab رایگان کرده است، اما هر دارایی هنوز باید یکی‌یکی به کتابخانه شما اضافه شود و تعدادشان هزاران مورد است. دریافت‌کننده Megascans یک افزونه کوچک مرورگر است که دکمه **Add to My Library** خود Fab را با سرعتی آرام و جلوی چشم شما برایتان می‌زند.
+Epic کل مجموعه Quixel Megascans را در Fab رایگان کرده است، اما هر دارایی هنوز باید یکی‌یکی به کتابخانه شما اضافه شود و تعدادشان هزاران مورد است. ScanHarvest یک افزونه کوچک مرورگر است که دکمه **Add to My Library** خود Fab را با سرعتی آرام و جلوی چشم شما برایتان می‌زند.
 
 این ابزار برای کلاس درس ساخته شده است: دانشجو یک بار آن را نصب می‌کند، یک دکمه می‌زند و زبانه را باز می‌گذارد.
 
@@ -46,12 +46,12 @@ Epic کل مجموعه Quixel Megascans را در Fab رایگان کرده اس
 
 در **گوگل کروم** و **مایکروسافت اج** (نسخه ۱۱۶ یا جدیدتر) روی ویندوز، مک و لینوکس کار می‌کند.
 
-۱. فایل [**MegascansClaimer.zip**](https://github.com/mohsenicreative/megascans-claimer/releases/latest/download/MegascansClaimer.zip) را از [آخرین نسخه](https://github.com/mohsenicreative/megascans-claimer/releases/latest) دانلود کنید.<br>
-۲. آن را در پوشه‌ای که نگه می‌دارید (مثلاً `Documents/MegascansClaimer`) استخراج کنید. اگر پوشه را پاک کنید، افزونه از کار می‌افتد.<br>
+۱. فایل [**ScanHarvest.zip**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip) را از [آخرین نسخه](https://github.com/mohsenicreative/scanharvest/releases/latest) دانلود کنید.<br>
+۲. آن را در پوشه‌ای که نگه می‌دارید (مثلاً `Documents/ScanHarvest`) استخراج کنید. اگر پوشه را پاک کنید، افزونه از کار می‌افتد.<br>
 ۳. صفحه `chrome://extensions` (کروم) یا `edge://extensions` (اج) را باز کنید.<br>
 ۴. **Developer mode** را روشن کنید (کروم: بالا سمت راست، اج: نوار کناری چپ).<br>
-۵. روی **Load unpacked** بزنید و پوشه `MegascansClaimer` (که `manifest.json` داخل آن است) را انتخاب کنید.<br>
-۶. از منوی آیکن پازل در نوار ابزار، **Megascans Claimer** را سنجاق کنید.
+۵. روی **Load unpacked** بزنید و پوشه `ScanHarvest` (که `manifest.json` داخل آن است) را انتخاب کنید.<br>
+۶. از منوی آیکن پازل در نوار ابزار، **ScanHarvest** را سنجاق کنید.
 
 > برای به‌روزرسانی: فایل zip جدید را دانلود کنید، پوشه را جایگزین کنید و روی دکمه بارگذاری مجدد (↻) در کارت افزونه بزنید.
 
@@ -80,7 +80,7 @@ Epic قانونی له یا علیه ابزارهای کمکی مانند این
 - **«به نظر می‌رسد وارد حساب نشده‌اید»:** در همان پروفایل مرورگر وارد fab.com شوید، صفحه را دوباره بارگذاری و «شروع» را بزنید.
 - **«Fab خواست سرعت را کم کنیم»:** صبر کنید. پس از چند بار پشت سر هم، کار متوقف می‌شود. حدود یک ساعت بعد «ادامه» را بزنید.
 - **در زبانه پس‌زمینه کند می‌شود:** مرورگرها زبانه‌های پنهان را کند می‌کنند. زبانه Fab را در یک پنجره جدا و قابل‌مشاهده نگه دارید.
-- **خطای فیلتر «رایگان» یا توقف بارگذاری نتایج:** صفحه را دوباره بارگذاری و «ادامه» را بزنید. اگر تکرار شد، [یک گزارش مشکل باز کنید](https://github.com/mohsenicreative/megascans-claimer/issues).
+- **خطای فیلتر «رایگان» یا توقف بارگذاری نتایج:** صفحه را دوباره بارگذاری و «ادامه» را بزنید. اگر تکرار شد، [یک گزارش مشکل باز کنید](https://github.com/mohsenicreative/scanharvest/issues).
 
 ## برای نگهدارندگان
 
@@ -90,6 +90,6 @@ Epic قانونی له یا علیه ابزارهای کمکی مانند این
 
 [MIT](LICENSE) © ۲۰۲۶ محمدرضا محسنی. آیکن‌ها از [Lucide](https://lucide.dev) (مجوز ISC).
 
-دریافت‌کننده Megascans یک ابزار آموزشی مستقل و متن‌باز است و ساخته، تأییدشده یا وابسته به Epic Games، Fab یا Quixel نیست. «Quixel»، «Megascans»، «Fab» و «Epic Games» علائم تجاری Epic Games, Inc. هستند.
+ScanHarvest یک ابزار آموزشی مستقل و متن‌باز است و ساخته، تأییدشده یا وابسته به Epic Games، Fab یا Quixel نیست. «Quixel»، «Megascans»، «Fab» و «Epic Games» علائم تجاری Epic Games, Inc. هستند.
 
 </div>

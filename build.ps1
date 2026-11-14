@@ -1,4 +1,4 @@
-# Builds dist\MegascansClaimer.zip (same layout as the GitHub release) and syncs the guide's shared assets.
+# Builds dist\ScanHarvest.zip (same layout as the GitHub release) and syncs the guide's shared assets.
 # Usage:  pwsh -File build.ps1
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
@@ -12,17 +12,17 @@ node (Join-Path $root 'tools/check.mjs')
 if ($LASTEXITCODE -ne 0) { throw 'Consistency checks failed.' }
 
 New-Item -ItemType Directory -Force $dist | Out-Null
-$staging = Join-Path $dist 'MegascansClaimer'
+$staging = Join-Path $dist 'ScanHarvest'
 if (Test-Path $staging) { Remove-Item -Recurse -Force $staging }
 Copy-Item $ext $staging -Recurse
 Copy-Item (Join-Path $root 'LICENSE'), (Join-Path $root 'THIRD_PARTY_NOTICES.md') $staging
 
-$zip = Join-Path $dist 'MegascansClaimer.zip'
+$zip = Join-Path $dist 'ScanHarvest.zip'
 if (Test-Path $zip) { Remove-Item -Force $zip }
-Compress-Archive -Path $staging -DestinationPath $zip   # one top-level "MegascansClaimer" folder (Load unpacked)
+Compress-Archive -Path $staging -DestinationPath $zip   # one top-level "ScanHarvest" folder (Load unpacked)
 
 # Chrome Web Store / Edge Add-ons need manifest.json at the root of the zip.
-$store = Join-Path $dist 'MegascansClaimer-webstore.zip'
+$store = Join-Path $dist 'ScanHarvest-webstore.zip'
 if (Test-Path $store) { Remove-Item -Force $store }
 Compress-Archive -Path (Join-Path $staging '*') -DestinationPath $store
 Remove-Item -Recurse -Force $staging

@@ -67,7 +67,7 @@
   const v = new URLSearchParams(location.search).get('v') || 'shot1';
   const img = p => `../../docs/images/${p}`;
   const icon = (n, s = 18) => ICONS.svg(n, s);
-  const brand = `<div class="brand"><img src="${img('icon-128.png')}" alt="">Megascans Claimer</div>`;
+  const brand = `<div class="brand"><img src="${img('icon-128.png')}" alt="">ScanHarvest</div>`;
   const chip = (i, t) => `<span class="chip">${icon(i, 16)}${t}</span>`;
   const win = src => `<div class="window"><div class="bar"><i></i><i></i><i></i></div><img src="${img(src)}" alt=""></div>`;
   const langs = [['en','English'],['fa','فارسی'],['fr','Français'],['de','Deutsch'],['es','Español'],['zh','中文']];
@@ -104,7 +104,7 @@
         <div class="popup">${`<img src="${img('popup-en.png')}" alt="">`}</div>
       </div></div>`,
     promo: `<div class="canvas" style="width:880px;height:560px;display:flex;flex-direction:column;justify-content:center;padding:0 64px">
-        <div class="brand" style="font-size:34px;gap:18px"><img src="${img('icon-128.png')}" style="width:76px;height:76px;border-radius:20px" alt="">Megascans Claimer</div>
+        <div class="brand" style="font-size:34px;gap:18px"><img src="${img('icon-128.png')}" style="width:76px;height:76px;border-radius:20px" alt="">ScanHarvest</div>
         <h1 style="font-size:66px;margin-top:30px">Free Megascans,<br><span class="grad">claimed for you.</span></h1>
       </div>`,
     marquee: `<div class="canvas" style="width:1400px;height:560px"><div class="split" style="grid-template-columns:560px 1fr;padding:0 0 0 80px">

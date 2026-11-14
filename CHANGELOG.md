@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-11-14
+
+### Changed
+- Renamed from *Megascans Claimer* to **ScanHarvest**, so the product name doesn’t use Epic Games, Fab or Quixel trademarks. The descriptions still say which site it works with.
+- The repository moved to https://github.com/mohsenicreative/scanharvest (old links redirect), and the guide is now at https://mohsenicreative.github.io/scanharvest/.
+- Release files are renamed to `ScanHarvest.zip` and `ScanHarvest-webstore.zip`.
+- The store title now includes a short, translated description, for example *ScanHarvest – bulk-add free assets to your library*.
+
 ## [1.1.0] - 2026-11-14
 
 ### Changed
@@ -15,7 +23,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 - Chrome Web Store kit in `store/`: listing texts in six languages, permission justifications, a privacy-practices guide, 1280×800 screenshots and promo tiles.
-- A privacy policy page: https://mohsenicreative.github.io/megascans-claimer/privacy.html
+- A privacy policy page: https://mohsenicreative.github.io/scanharvest/privacy.html
 - Releases now also include `MegascansClaimer-webstore.zip` (manifest at the zip root) and `SHA256SUMS.txt`.
 
 ## [1.0.0] - 2026-11-14
@@ -30,5 +38,6 @@ All notable changes to this project are documented here. The format follows [Kee
 - Toolbar badge and desktop notifications when a run finishes or needs attention.
 - Multilingual student guide (GitHub Pages) and READMEs in six languages.
 
-[1.1.0]: https://github.com/mohsenicreative/megascans-claimer/releases/tag/v1.1.0
-[1.0.0]: https://github.com/mohsenicreative/megascans-claimer/releases/tag/v1.0.0
+[1.2.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.2.0
+[1.1.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.1.0
+[1.0.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.0.0

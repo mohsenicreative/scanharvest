@@ -1,17 +1,17 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "short_name": "Megascans Claimer",
-  "version": "1.1.0",
+  "short_name": "ScanHarvest",
+  "version": "1.2.0",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
-  "homepage_url": "https://github.com/mohsenicreative/megascans-claimer",
+  "homepage_url": "https://github.com/mohsenicreative/scanharvest",
   "minimum_chrome_version": "116",
   "permissions": ["storage", "notifications"],
   "host_permissions": ["https://www.fab.com/*"],
   "background": { "service_worker": "background.js" },
   "action": {
-    "default_title": "Megascans Claimer",
+    "default_title": "ScanHarvest",
     "default_popup": "popup.html",
     "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png" }
   },

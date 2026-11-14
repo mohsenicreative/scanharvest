@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/images/icon-128.png" width="96" height="96" alt="Logo Megascans Claimer">
+<img src="docs/images/icon-128.png" width="96" height="96" alt="Logo ScanHarvest">
 
-# Megascans Claimer
+# ScanHarvest
 
 **Ajoutez tous les Quixel Megascans gratuits de Fab à votre bibliothèque, sans cliquer des milliers de fois.**
 
@@ -13,20 +13,20 @@
 <a href="README.es.md"><img src="docs/images/flags/es.svg" width="24" height="16" alt=""> Español</a> ·
 <a href="README.zh-CN.md"><img src="docs/images/flags/zh.svg" width="24" height="16" alt=""> 中文</a>
 
-[![Latest release](https://img.shields.io/github/v/release/mohsenicreative/megascans-claimer?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/megascans-claimer/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/mohsenicreative/scanharvest?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/scanharvest/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-8b9cff?style=flat-square)](LICENSE)
 
-[**Télécharger**](https://github.com/mohsenicreative/megascans-claimer/releases/latest/download/MegascansClaimer.zip) ·
-[**Guide de l’étudiant**](https://mohsenicreative.github.io/megascans-claimer/?lang=fr) ·
-[Signaler un problème](https://github.com/mohsenicreative/megascans-claimer/issues)
+[**Télécharger**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip) ·
+[**Guide de l’étudiant**](https://mohsenicreative.github.io/scanharvest/?lang=fr) ·
+[Signaler un problème](https://github.com/mohsenicreative/scanharvest/issues)
 
-<img src="docs/images/panel-en.png" alt="Panneau de progression au-dessus de Fab" width="860">
+<img src="docs/images/banner.png" alt="ScanHarvest" width="900">
 
 </div>
 
 ## Pourquoi
 
-Epic a rendu gratuite toute la collection Quixel Megascans sur Fab, mais chaque ressource doit encore être ajoutée une par une, et il y en a des milliers. Megascans Claimer est une petite extension de navigateur qui appuie pour vous sur le bouton **Add to My Library** de Fab, à un rythme calme, sous vos yeux.
+Epic a rendu gratuite toute la collection Quixel Megascans sur Fab, mais chaque ressource doit encore être ajoutée une par une, et il y en a des milliers. ScanHarvest est une petite extension de navigateur qui appuie pour vous sur le bouton **Add to My Library** de Fab, à un rythme calme, sous vos yeux.
 
 Elle a été conçue pour une classe : les étudiants l’installent une fois, cliquent sur un bouton et laissent l’onglet ouvert.
 
@@ -44,12 +44,12 @@ Elle a été conçue pour une classe : les étudiants l’installent une fois, c
 
 Fonctionne dans **Google Chrome** et **Microsoft Edge** (version 116 ou plus récente) sous Windows, macOS et Linux.
 
-1. Téléchargez [**MegascansClaimer.zip**](https://github.com/mohsenicreative/megascans-claimer/releases/latest/download/MegascansClaimer.zip) depuis la [dernière version](https://github.com/mohsenicreative/megascans-claimer/releases/latest).
-2. Extrayez-le dans un dossier permanent, par exemple `Documents/MegascansClaimer`. Si vous supprimez le dossier, l’extension cesse de fonctionner.
+1. Téléchargez [**ScanHarvest.zip**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip) depuis la [dernière version](https://github.com/mohsenicreative/scanharvest/releases/latest).
+2. Extrayez-le dans un dossier permanent, par exemple `Documents/ScanHarvest`. Si vous supprimez le dossier, l’extension cesse de fonctionner.
 3. Ouvrez `chrome://extensions` (Chrome) ou `edge://extensions` (Edge).
 4. Activez le **mode développeur** (Chrome : en haut à droite, Edge : barre latérale gauche).
-5. Cliquez sur **Charger l’extension non empaquetée** et choisissez le dossier `MegascansClaimer` (celui qui contient `manifest.json`).
-6. Épinglez **Megascans Claimer** depuis le menu puzzle de la barre d’outils.
+5. Cliquez sur **Charger l’extension non empaquetée** et choisissez le dossier `ScanHarvest` (celui qui contient `manifest.json`).
+6. Épinglez **ScanHarvest** depuis le menu puzzle de la barre d’outils.
 
 > Mise à jour : téléchargez le nouveau zip, remplacez le dossier, puis cliquez sur le bouton de rechargement (↻) de l’extension.
 
@@ -78,7 +78,7 @@ Epic n’a publié aucune règle pour ou contre ce type d’outil. L’extension
 - **« Vous ne semblez pas connecté »** : connectez-vous à fab.com dans le même profil, rechargez la page et cliquez sur Commencer.
 - **« Fab demande de ralentir »** : patientez. Après plusieurs limites, l’exécution se met en pause ; reprenez dans une heure environ.
 - **Lent en arrière-plan** : les navigateurs ralentissent les onglets cachés. Gardez l’onglet Fab visible, par exemple dans sa propre fenêtre.
-- **Filtre « Free » non confirmé / plus de résultats chargés** : rechargez puis cliquez sur Reprendre. Si cela persiste, [ouvrez un ticket](https://github.com/mohsenicreative/megascans-claimer/issues).
+- **Filtre « Free » non confirmé / plus de résultats chargés** : rechargez puis cliquez sur Reprendre. Si cela persiste, [ouvrez un ticket](https://github.com/mohsenicreative/scanharvest/issues).
 
 ## Pour les mainteneurs
 
@@ -88,4 +88,4 @@ La structure du projet, la mise à jour des sélecteurs quand Fab change, l’ap
 
 [MIT](LICENSE) © 2026 Mohammadreza Mohseni. Icônes : [Lucide](https://lucide.dev) (licence ISC).
 
-Megascans Claimer est un outil pédagogique indépendant et open source. Il n’est ni créé, ni approuvé par Epic Games, Fab ou Quixel, ni affilié à ces sociétés. « Quixel », « Megascans », « Fab » et « Epic Games » sont des marques d’Epic Games, Inc.
+ScanHarvest est un outil pédagogique indépendant et open source. Il n’est ni créé, ni approuvé par Epic Games, Fab ou Quixel, ni affilié à ces sociétés. « Quixel », « Megascans », « Fab » et « Epic Games » sont des marques d’Epic Games, Inc.

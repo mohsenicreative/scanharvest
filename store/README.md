@@ -1,21 +1,21 @@
 # Chrome Web Store submission kit
 
-Everything needed to publish **Megascans Claimer** on the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole). The same package and texts also work for [Microsoft Edge Add-ons](https://partner.microsoft.com/dashboard/microsoftedge/overview), which is free.
+Everything needed to publish **ScanHarvest** on the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole). The same package and texts also work for [Microsoft Edge Add-ons](https://partner.microsoft.com/dashboard/microsoftedge/overview), which is free.
 
 ## 1. Package
 
-Upload **`MegascansClaimer-webstore.zip`**. In that zip, `manifest.json` sits at the root, which the store requires. You can get it in either of two ways:
+Upload **`ScanHarvest-webstore.zip`**. In that zip, `manifest.json` sits at the root, which the store requires. You can get it in either of two ways:
 
-- Attached to every [GitHub release](https://github.com/mohsenicreative/megascans-claimer/releases/latest).
+- Attached to every [GitHub release](https://github.com/mohsenicreative/scanharvest/releases/latest).
 - Built locally with `pwsh -File build.ps1`, which writes it to `dist/`.
 
-> Don't upload `MegascansClaimer.zip`. That one has a top-level folder, so students can extract it and use *Load unpacked*.
+> Don't upload `ScanHarvest.zip`. That one has a top-level folder, so students can extract it and use *Load unpacked*.
 
 ## 2. Store listing tab
 
 | Field | Value |
 |---|---|
-| Title | Taken from the package: *Megascans Claimer for Fab* (localized from `_locales`) |
+| Title | Taken from the package: *ScanHarvest* (localized from `_locales`) |
 | Summary | Taken from the package (`extDescription`, ≤ 132 characters, localized) |
 | Description | Paste from `listing/<language>.txt`. Add each language under *Localization* in the dashboard. |
 | Category | **Productivity › Tools** (Education is a reasonable alternative) |
@@ -25,8 +25,8 @@ Upload **`MegascansClaimer-webstore.zip`**. In that zip, `manifest.json` sits at
 | Small promo tile (440×280) | `art/out/promo-small.png` |
 | Marquee (1400×560, optional) | `art/out/promo-marquee.png` |
 | Official URL | none |
-| Homepage URL | https://mohsenicreative.github.io/megascans-claimer/ |
-| Support URL | https://github.com/mohsenicreative/megascans-claimer/issues |
+| Homepage URL | https://mohsenicreative.github.io/scanharvest/ |
+| Support URL | https://github.com/mohsenicreative/scanharvest/issues |
 
 ## 3. Privacy practices tab
 
@@ -50,7 +50,7 @@ Upload **`MegascansClaimer-webstore.zip`**. In that zip, `manifest.json` sits at
 - I do not use or transfer user data for purposes that are unrelated to my item's single purpose.
 - I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
-**Privacy policy URL:** https://mohsenicreative.github.io/megascans-claimer/privacy.html
+**Privacy policy URL:** https://mohsenicreative.github.io/scanharvest/privacy.html
 
 ## 4. Distribution tab
 
@@ -67,7 +67,7 @@ Paste this into the *notes for reviewer* field if the dashboard asks for test in
 
 1. Copy the store URL, which looks like `https://chromewebstore.google.com/detail/<id>`.
 2. Add it to `README*.md` and `docs/index.html` as the main install button. Students then install with one click and get updates automatically.
-3. For each new version, bump `version` in `extension/manifest.json`, push a signed tag, and upload the new `MegascansClaimer-webstore.zip` from the release.
+3. For each new version, bump `version` in `extension/manifest.json`, push a signed tag, and upload the new `ScanHarvest-webstore.zip` from the release.
 
 ## Regenerating the images
 

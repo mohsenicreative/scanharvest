@@ -1,4 +1,4 @@
-Epic 已将 Quixel Megascans 全部资源在 Fab 上免费开放，但每项资源仍需逐个加入你的资源库，总数多达数千项。Megascans 领取助手替你完成这些点击。
+Epic 已将 Quixel Megascans 全部资源在 Fab 上免费开放，但每项资源仍需逐个加入你的资源库，总数多达数千项。ScanHarvest 替你完成这些点击。
 
 工作原理
 打开扩展，点击“打开 Fab Megascans 并开始”。免费 Quixel Megascans 页面会打开，并在上方显示进度面板。对于每个你尚未拥有的免费项目，扩展会点击 Fab 自带的“Add to My Library”按钮，并在 Fab 确认后才继续下一项。每一步都清晰可见。
@@ -21,6 +21,6 @@ Epic 已将 Quixel Megascans 全部资源在 Fab 上免费开放，但每项资�
 隐私
 不收集任何数据，没有统计分析，没有远程代码。进度仅保存在你的电脑上。
 
-免费开源：https://github.com/mohsenicreative/megascans-claimer
+免费开源：https://github.com/mohsenicreative/scanharvest
 
-Megascans 领取助手是一个独立工具，与 Epic Games、Fab 或 Quixel 无关联，也未获其认可。Epic 尚未发布支持或禁止此类工具的规定。本扩展只做你手动也能做的事，节奏平稳。是否使用由你自行决定。
+ScanHarvest 是一个独立工具，与 Epic Games、Fab 或 Quixel 无关联，也未获其认可。Epic 尚未发布支持或禁止此类工具的规定。本扩展只做你手动也能做的事，节奏平稳。是否使用由你自行决定。

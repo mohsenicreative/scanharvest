@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/images/icon-128.png" width="96" height="96" alt="Megascans 领取助手图标">
+<img src="docs/images/icon-128.png" width="96" height="96" alt="ScanHarvest 图标">
 
-# Megascans 领取助手
+# ScanHarvest
 
 **无需点击上千次，即可把 Fab 上所有免费的 Quixel Megascans 加入你的资源库。**
 
@@ -13,20 +13,20 @@
 <a href="README.es.md"><img src="docs/images/flags/es.svg" width="24" height="16" alt=""> Español</a> ·
 <a href="README.zh-CN.md"><img src="docs/images/flags/zh.svg" width="24" height="16" alt=""> 中文</a>
 
-[![Latest release](https://img.shields.io/github/v/release/mohsenicreative/megascans-claimer?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/megascans-claimer/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/mohsenicreative/scanharvest?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/scanharvest/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-8b9cff?style=flat-square)](LICENSE)
 
-[**下载**](https://github.com/mohsenicreative/megascans-claimer/releases/latest/download/MegascansClaimer.zip) ·
-[**学生指南**](https://mohsenicreative.github.io/megascans-claimer/?lang=zh) ·
-[反馈问题](https://github.com/mohsenicreative/megascans-claimer/issues)
+[**下载**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip) ·
+[**学生指南**](https://mohsenicreative.github.io/scanharvest/?lang=zh) ·
+[反馈问题](https://github.com/mohsenicreative/scanharvest/issues)
 
-<img src="docs/images/panel-en.png" alt="显示在 Fab 页面上的进度面板" width="860">
+<img src="docs/images/banner.png" alt="ScanHarvest" width="900">
 
 </div>
 
 ## 为什么需要它
 
-Epic 已将 Quixel Megascans 全部资源在 Fab 上免费开放，但每项资源仍需逐个加入资源库，而总数多达数千项。Megascans 领取助手是一个小巧的浏览器扩展，会以平稳的节奏、在你眼前替你点击 Fab 自带的 **Add to My Library** 按钮。
+Epic 已将 Quixel Megascans 全部资源在 Fab 上免费开放，但每项资源仍需逐个加入资源库，而总数多达数千项。ScanHarvest 是一个小巧的浏览器扩展，会以平稳的节奏、在你眼前替你点击 Fab 自带的 **Add to My Library** 按钮。
 
 它专为课堂设计：学生只需安装一次，点击一个按钮，然后保持标签页打开。
 
@@ -44,12 +44,12 @@ Epic 已将 Quixel Megascans 全部资源在 Fab 上免费开放，但每项资�
 
 适用于 Windows、macOS 和 Linux 上的 **Google Chrome** 与 **Microsoft Edge**（116 或更高版本）。
 
-1. 从[最新版本](https://github.com/mohsenicreative/megascans-claimer/releases/latest)下载 [**MegascansClaimer.zip**](https://github.com/mohsenicreative/megascans-claimer/releases/latest/download/MegascansClaimer.zip)。
-2. 解压到一个长期保存的文件夹，例如 `文档/MegascansClaimer`。删除该文件夹会导致扩展失效。
+1. 从[最新版本](https://github.com/mohsenicreative/scanharvest/releases/latest)下载 [**ScanHarvest.zip**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip)。
+2. 解压到一个长期保存的文件夹，例如 `文档/ScanHarvest`。删除该文件夹会导致扩展失效。
 3. 打开 `chrome://extensions`（Chrome）或 `edge://extensions`（Edge）。
 4. 开启 **开发者模式**（Chrome：右上角；Edge：左侧边栏）。
-5. 点击 **加载已解压的扩展程序**，选择 `MegascansClaimer` 文件夹（其中包含 `manifest.json`）。
-6. 在工具栏的拼图菜单中固定 **Megascans Claimer**。
+5. 点击 **加载已解压的扩展程序**，选择 `ScanHarvest` 文件夹（其中包含 `manifest.json`）。
+6. 在工具栏的拼图菜单中固定 **ScanHarvest**。
 
 > 更新方法：下载新的 zip，替换文件夹，然后在扩展卡片上点击重新加载按钮（↻）。
 
@@ -78,7 +78,7 @@ Epic 尚未发布支持或禁止此类辅助工具的规定。本扩展只做你
 - **“你似乎尚未登录”：** 在同一浏览器配置文件中登录 fab.com，刷新页面后点击“开始”。
 - **“Fab 要求放慢速度”：** 请稍候。连续多次受限后会自动暂停，约一小时后点击“继续”。
 - **后台运行变慢：** 浏览器会降低隐藏标签页的速度。请保持 Fab 标签页可见，例如放在单独窗口中。
-- **无法确认“免费”筛选 / 不再加载更多结果：** 刷新页面后点击“继续”。如果问题持续，请[提交 issue](https://github.com/mohsenicreative/megascans-claimer/issues)。
+- **无法确认“免费”筛选 / 不再加载更多结果：** 刷新页面后点击“继续”。如果问题持续，请[提交 issue](https://github.com/mohsenicreative/scanharvest/issues)。
 
 ## 维护者说明
 
@@ -88,4 +88,4 @@ Epic 尚未发布支持或禁止此类辅助工具的规定。本扩展只做你
 
 [MIT](LICENSE) © 2026 Mohammadreza Mohseni。图标来自 [Lucide](https://lucide.dev)（ISC 许可证）。
 
-Megascans 领取助手是一个独立的开源教学工具，并非由 Epic Games、Fab 或 Quixel 制作、认可，也与其无关联。“Quixel”“Megascans”“Fab”和“Epic Games”是 Epic Games, Inc. 的商标。
+ScanHarvest 是一个独立的开源教学工具，并非由 Epic Games、Fab 或 Quixel 制作、认可，也与其无关联。“Quixel”“Megascans”“Fab”和“Epic Games”是 Epic Games, Inc. 的商标。

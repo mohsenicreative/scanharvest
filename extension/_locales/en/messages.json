@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "Megascans Claimer for Fab"
+    "message": "ScanHarvest – bulk-add free assets to your library"
   },
   "extDescription": {
     "message": "Adds the free Quixel Megascans listings on Fab to your library, one at a time, using Fab’s own Add to My Library button."

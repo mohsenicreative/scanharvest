@@ -1,4 +1,4 @@
-// Megascans Claimer — popup.
+// ScanHarvest — popup.
 const CATALOG_URL = 'https://www.fab.com/sellers/Quixel%20Megascans?is_free=1&lang=en';
 const STALE_MS = 15000;
 const { t, tm, num } = I18N;

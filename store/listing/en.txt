@@ -1,4 +1,4 @@
-Epic made the whole Quixel Megascans collection free on Fab, but every asset still has to be added to your library one at a time, and there are thousands of them. Megascans Claimer does the clicking for you.
+Epic made the whole Quixel Megascans collection free on Fab, but every asset still has to be added to your library one at a time, and there are thousands of them. ScanHarvest does the clicking for you.
 
 HOW IT WORKS
 Open the extension and click "Open Fab Megascans & start". The Free Quixel Megascans page opens with a progress panel on top. For each free listing you don't own yet, the extension presses Fab's own "Add to My Library" button and waits until Fab confirms it before moving on. You can watch every step.
@@ -21,6 +21,6 @@ TIPS
 PRIVACY
 No data collection, no analytics, no remote code. Progress is stored only on your computer.
 
-Free and open source: https://github.com/mohsenicreative/megascans-claimer
+Free and open source: https://github.com/mohsenicreative/scanharvest
 
-Megascans Claimer is an independent tool and is not affiliated with or endorsed by Epic Games, Fab or Quixel. Epic hasn't published a rule for or against helper tools like this. The extension only does what you could do by hand, at a calm pace. Use it at your own discretion.
+ScanHarvest is an independent tool and is not affiliated with or endorsed by Epic Games, Fab or Quixel. Epic hasn't published a rule for or against helper tools like this. The extension only does what you could do by hand, at a calm pace. Use it at your own discretion.

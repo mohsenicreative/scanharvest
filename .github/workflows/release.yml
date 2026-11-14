@@ -31,12 +31,12 @@ jobs:
 
       - name: Build zip
         run: |
-          mkdir -p build/MegascansClaimer
-          cp -r extension/. build/MegascansClaimer/
-          cp LICENSE THIRD_PARTY_NOTICES.md build/MegascansClaimer/
-          (cd build && zip -r -X ../MegascansClaimer.zip MegascansClaimer)
-          (cd build/MegascansClaimer && zip -r -X ../../MegascansClaimer-webstore.zip .)
-          sha256sum MegascansClaimer.zip MegascansClaimer-webstore.zip > SHA256SUMS.txt
+          mkdir -p build/ScanHarvest
+          cp -r extension/. build/ScanHarvest/
+          cp LICENSE THIRD_PARTY_NOTICES.md build/ScanHarvest/
+          (cd build && zip -r -X ../ScanHarvest.zip ScanHarvest)
+          (cd build/ScanHarvest && zip -r -X ../../ScanHarvest-webstore.zip .)
+          sha256sum ScanHarvest.zip ScanHarvest-webstore.zip > SHA256SUMS.txt
 
       - name: Release notes from CHANGELOG
         run: |
@@ -49,8 +49,8 @@ jobs:
           {
             echo
             echo "### Install"
-            echo "Download **MegascansClaimer.zip**, extract it, open \`chrome://extensions\` or \`edge://extensions\`, turn on Developer mode and choose **Load unpacked**."
-            echo "**MegascansClaimer-webstore.zip** is the same build packaged for the Chrome Web Store and Edge Add-ons."
+            echo "Download **ScanHarvest.zip**, extract it, open \`chrome://extensions\` or \`edge://extensions\`, turn on Developer mode and choose **Load unpacked**."
+            echo "**ScanHarvest-webstore.zip** is the same build packaged for the Chrome Web Store and Edge Add-ons."
             echo "Step-by-step guide in 6 languages: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
           } >> notes.md
 
@@ -58,7 +58,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" MegascansClaimer.zip MegascansClaimer-webstore.zip SHA256SUMS.txt \
-            --title "Megascans Claimer $GITHUB_REF_NAME" \
+          gh release create "$GITHUB_REF_NAME" ScanHarvest.zip ScanHarvest-webstore.zip SHA256SUMS.txt \
+            --title "ScanHarvest $GITHUB_REF_NAME" \
             --notes-file notes.md \
             --verify-tag

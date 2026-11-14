@@ -1,5 +1,5 @@
 /*
- * Megascans Claimer — translations.
+ * ScanHarvest — translations.
  * Shared by the popup, the on-page panel (content script) and the background worker.
  * The chosen language is stored in chrome.storage.local under "lang".
  * To add a language: add it to LANGS, add a dictionary below, and a flag in flags.js.
@@ -16,7 +16,7 @@ globalThis.I18N = (() => {
 
   const STRINGS = {
     en: {
-      appName: 'Megascans Claimer',
+      appName: 'ScanHarvest',
       tagline: 'Free Quixel Megascans, straight to your Fab library',
       language: 'Language',
       status_idle: 'Ready', status_running: 'Running', status_paused: 'Paused', status_finished: 'Finished', status_error: 'Needs attention',
@@ -59,12 +59,12 @@ globalThis.I18N = (() => {
       e_fail_streak: 'Several claims in a row could not be confirmed. Fab may be busy. Click Resume in a few minutes.',
       e_rate_limit: 'Fab asked us to slow down several times. Take a break and click Resume in about an hour.',
       e_unknown: 'Something unexpected happened. Click Resume to continue.',
-      n_finished: 'Megascans Claimer finished', n_paused: 'Megascans Claimer paused', n_error: 'Megascans Claimer needs attention',
+      n_finished: 'ScanHarvest finished', n_paused: 'ScanHarvest paused', n_error: 'ScanHarvest needs attention',
       n_body: 'Added: {a} · Already owned: {o}'
     },
 
     fa: {
-      appName: 'دریافت‌کننده Megascans',
+      appName: 'ScanHarvest',
       tagline: 'Quixel Megascans رایگان، مستقیم به کتابخانه Fab شما',
       language: 'زبان',
       status_idle: 'آماده', status_running: 'در حال اجرا', status_paused: 'متوقف', status_finished: 'تمام شد', status_error: 'نیاز به بررسی',
@@ -107,12 +107,12 @@ globalThis.I18N = (() => {
       e_fail_streak: 'چند مورد پشت سر هم تأیید نشد. ممکن است Fab شلوغ باشد. چند دقیقه بعد روی «ادامه» بزنید.',
       e_rate_limit: 'Fab چند بار خواست سرعت را کم کنیم. کمی استراحت کنید و حدود یک ساعت بعد روی «ادامه» بزنید.',
       e_unknown: 'مشکل غیرمنتظره‌ای پیش آمد. برای ادامه روی «ادامه» بزنید.',
-      n_finished: 'دریافت Megascans تمام شد', n_paused: 'دریافت Megascans متوقف شد', n_error: 'دریافت Megascans نیاز به بررسی دارد',
+      n_finished: 'ScanHarvest تمام شد', n_paused: 'ScanHarvest متوقف شد', n_error: 'ScanHarvest نیاز به بررسی دارد',
       n_body: 'اضافه‌شده: {a} · از قبل داشتید: {o}'
     },
 
     fr: {
-      appName: 'Megascans Claimer',
+      appName: 'ScanHarvest',
       tagline: 'Les Quixel Megascans gratuits, directement dans votre bibliothèque Fab',
       language: 'Langue',
       status_idle: 'Prêt', status_running: 'En cours', status_paused: 'En pause', status_finished: 'Terminé', status_error: 'Action requise',
@@ -155,12 +155,12 @@ globalThis.I18N = (() => {
       e_fail_streak: 'Plusieurs ajouts d’affilée n’ont pas été confirmés. Fab est peut-être surchargé. Cliquez sur Reprendre dans quelques minutes.',
       e_rate_limit: 'Fab a demandé plusieurs fois de ralentir. Faites une pause et cliquez sur Reprendre dans environ une heure.',
       e_unknown: 'Une erreur inattendue s’est produite. Cliquez sur Reprendre pour continuer.',
-      n_finished: 'Megascans Claimer a terminé', n_paused: 'Megascans Claimer en pause', n_error: 'Megascans Claimer : action requise',
+      n_finished: 'ScanHarvest a terminé', n_paused: 'ScanHarvest en pause', n_error: 'ScanHarvest : action requise',
       n_body: 'Ajoutées : {a} · Déjà possédées : {o}'
     },
 
     de: {
-      appName: 'Megascans Claimer',
+      appName: 'ScanHarvest',
       tagline: 'Kostenlose Quixel Megascans direkt in deine Fab-Bibliothek',
       language: 'Sprache',
       status_idle: 'Bereit', status_running: 'Läuft', status_paused: 'Pausiert', status_finished: 'Fertig', status_error: 'Aktion nötig',
@@ -203,12 +203,12 @@ globalThis.I18N = (() => {
       e_fail_streak: 'Mehrere Elemente nacheinander wurden nicht bestätigt. Fab ist vielleicht ausgelastet. Klicke in ein paar Minuten auf Fortsetzen.',
       e_rate_limit: 'Fab hat mehrmals um eine Pause gebeten. Mach eine Pause und klicke in etwa einer Stunde auf Fortsetzen.',
       e_unknown: 'Etwas Unerwartetes ist passiert. Klicke auf Fortsetzen, um weiterzumachen.',
-      n_finished: 'Megascans Claimer ist fertig', n_paused: 'Megascans Claimer pausiert', n_error: 'Megascans Claimer: Aktion nötig',
+      n_finished: 'ScanHarvest ist fertig', n_paused: 'ScanHarvest pausiert', n_error: 'ScanHarvest: Aktion nötig',
       n_body: 'Hinzugefügt: {a} · Bereits vorhanden: {o}'
     },
 
     es: {
-      appName: 'Megascans Claimer',
+      appName: 'ScanHarvest',
       tagline: 'Quixel Megascans gratis, directo a tu biblioteca de Fab',
       language: 'Idioma',
       status_idle: 'Listo', status_running: 'En curso', status_paused: 'En pausa', status_finished: 'Terminado', status_error: 'Requiere atención',
@@ -251,12 +251,12 @@ globalThis.I18N = (() => {
       e_fail_streak: 'Varios elementos seguidos no se confirmaron. Puede que Fab esté saturado. Pulsa Reanudar en unos minutos.',
       e_rate_limit: 'Fab pidió varias veces ir más despacio. Descansa y pulsa Reanudar en aproximadamente una hora.',
       e_unknown: 'Ocurrió algo inesperado. Pulsa Reanudar para continuar.',
-      n_finished: 'Megascans Claimer terminó', n_paused: 'Megascans Claimer en pausa', n_error: 'Megascans Claimer requiere atención',
+      n_finished: 'ScanHarvest terminó', n_paused: 'ScanHarvest en pausa', n_error: 'ScanHarvest requiere atención',
       n_body: 'Añadidos: {a} · Ya los tenías: {o}'
     },
 
     zh: {
-      appName: 'Megascans 领取助手',
+      appName: 'ScanHarvest',
       tagline: '免费 Quixel Megascans，一键加入你的 Fab 资源库',
       language: '语言',
       status_idle: '就绪', status_running: '运行中', status_paused: '已暂停', status_finished: '已完成', status_error: '需要处理',
@@ -299,7 +299,7 @@ globalThis.I18N = (() => {
       e_fail_streak: '连续多项未能确认，Fab 可能较忙。请几分钟后点击“继续”。',
       e_rate_limit: 'Fab 多次要求放慢速度。请休息一下，约一小时后点击“继续”。',
       e_unknown: '发生了意外问题。点击“继续”以接着运行。',
-      n_finished: 'Megascans 领取已完成', n_paused: 'Megascans 领取已暂停', n_error: 'Megascans 领取需要处理',
+      n_finished: 'ScanHarvest 已完成', n_paused: 'ScanHarvest 已暂停', n_error: 'ScanHarvest 需要处理',
       n_body: '已添加：{a} · 已拥有：{o}'
     }
   };
