@@ -29,7 +29,7 @@ globalThis.MSC = {
     viewInLibrary: 'View in My Library',
     freePriceHeading: 'Free',
     noResults: /no results found/i,
-    rateLimited: /too many requests|rate limit|try again later/i,
+    rateLimited: /try again later|too many requests|rate[- ]limit/i,
     signIn: /^(sign in|sign up|log in)$/i,   // shown in Fab's header only when signed out
     resultCount: /([\d][\d,.\s]*)\s+(results?|products?|items?)\b/i
   },

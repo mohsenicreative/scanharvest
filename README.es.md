@@ -34,7 +34,7 @@ Se creó para el aula: los estudiantes la instalan una vez, pulsan un botón y d
 
 - **Un clic:** abre la ventana de la extensión y pulsa *Abrir Fab Megascans y empezar*. Sin consola ni scripts que pegar.
 - **Sin contraseñas:** funciona en la pestaña de Fab donde ya iniciaste sesión. Nunca lee, guarda ni envía tus credenciales o tokens.
-- **Ritmo respetuoso:** al menos 1,2 s entre elementos, esperando la confirmación de Fab en cada uno. Va más despacio si Fab indica *demasiadas solicitudes* y se pausa si se repite.
+- **Ritmo respetuoso:** al menos 0,6 s entre elementos, esperando la confirmación de Fab en cada uno. Va más despacio si Fab indica *demasiadas solicitudes* y se pausa si se repite.
 - **Pausar y reanudar:** el progreso se guarda en tu equipo. Cierra el navegador, vuelve más tarde y pulsa Reanudar.
 - **Comprobaciones:** solo añade elementos *Free* de Quixel Megascans y se salta lo que ya tienes.
 - **6 idiomas:** English, فارسی (de derecha a izquierda), Français, Deutsch, Español y 中文, con botones de bandera.

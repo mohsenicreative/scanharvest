@@ -1,0 +1,26 @@
+Epic hat die komplette Quixel-Megascans-Sammlung auf Fab kostenlos gemacht, aber jedes Asset muss weiterhin einzeln deiner Bibliothek hinzugefügt werden, und es sind tausende. Megascans Claimer klickt für dich.
+
+SO FUNKTIONIERT'S
+Öffne die Erweiterung und klicke auf „Fab Megascans öffnen & starten“. Die Seite mit den kostenlosen Quixel Megascans öffnet sich mit einem Fortschritts-Panel. Für jedes kostenlose Element, das du noch nicht hast, drückt die Erweiterung Fabs eigenen „Add to My Library“-Button und wartet auf Fabs Bestätigung, bevor sie weitermacht. Du siehst jeden Schritt.
+
+FUNKTIONEN
+• Ein Klick: keine Konsole, kein Skript zum Einfügen
+• Keine Passwörter: läuft im Fab-Tab, in dem du angemeldet bist, und liest oder sendet nie deine Zugangsdaten
+• Rücksichtsvolles Tempo: kurze Pause zwischen Klicks, bremst auf Fabs Wunsch und pausiert, wenn Fab wiederholt „zu viele Anfragen“ meldet
+• Jederzeit pausieren und fortsetzen; der Fortschritt übersteht Browser-Neustarts
+• Fügt nur kostenlose Einträge von Quixel Megascans hinzu und überspringt, was du schon hast
+• Live-Zähler, Zeit, Liste zum erneuten Versuchen, Badge und Benachrichtigungen
+• Oberfläche auf Englisch, Persisch (rechts nach links), Französisch, Deutsch, Spanisch und Chinesisch
+
+TIPPS
+• Melde dich zuerst auf fab.com an.
+• Öffne auf der Megascans-Seite User preferences und deaktiviere „Show products in My Library“. Das ist deutlich schneller.
+• Halte den Fab-Tab sichtbar (am besten in einem eigenen Fenster). Ein kompletter Durchlauf dauert einige Stunden.
+• Die Erweiterung fügt Elemente deiner Bibliothek hinzu. Herunterladen kannst du sie später in Fab, Unreal Engine oder Bridge.
+
+DATENSCHUTZ
+Keine Datenerhebung, keine Analysen, kein Remote-Code. Der Fortschritt bleibt auf deinem Computer.
+
+Kostenlos und Open Source: https://github.com/mohsenicreative/megascans-claimer
+
+Megascans Claimer ist ein unabhängiges Werkzeug und weder mit Epic Games, Fab oder Quixel verbunden noch von ihnen unterstützt. Epic hat keine Regel für oder gegen solche Werkzeuge veröffentlicht. Die Erweiterung macht nur, was du auch von Hand tun könntest, in ruhigem Tempo. Die Nutzung liegt in deinem Ermessen.

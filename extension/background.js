@@ -19,7 +19,7 @@ function setBadge(run) {
     return;
   }
   const look = {
-    running: { text: shortCount(run.confirmed), color: '#3d6bff' },
+    running: { text: shortCount(run.added), color: '#3d6bff' },
     paused: { text: '❚❚', color: '#b45309' },
     finished: { text: '✓', color: '#15803d' },
     error: { text: '!', color: '#b91c1c' }
@@ -31,7 +31,7 @@ function setBadge(run) {
 async function notify(run) {
   await I18N.load();
   const titleKey = { finished: 'n_finished', paused: 'n_paused', error: 'n_error' }[run.status] || 'appName';
-  const counts = I18N.t('n_body', { a: I18N.num(run.confirmed), o: I18N.num(run.alreadyOwned) });
+  const counts = I18N.t('n_body', { a: I18N.num(run.added), o: I18N.num(run.owned) });
   chrome.notifications.create(`msc-${Date.now()}`, {
     type: 'basic',
     iconUrl: 'icons/128.png',
@@ -42,31 +42,34 @@ async function notify(run) {
 }
 
 chrome.storage.onChanged.addListener((changes, area) => {
-  if (area !== 'local' || !changes.run) return;
-  const { oldValue: before, newValue: after } = changes.run;
+  if (area !== 'local' || !changes.progress) return;
+  const { oldValue: before, newValue: after } = changes.progress;
   setBadge(after);
   const userPaused = after?.msg?.k === 'm_paused_user';
   if (before?.status === 'running' && after && after.status !== 'running' && !userPaused) notify(after);
 });
 
 async function markInterrupted(key) {
-  const { run } = await chrome.storage.local.get('run');
+  const { progress: run } = await chrome.storage.local.get('progress');
   if (!run || run.status !== 'running') return;
-  run.elapsedMs += run.sessionStart ? Math.max(0, (run.heartbeat || Date.now()) - run.sessionStart) : 0;
-  Object.assign(run, { status: 'paused', sessionStart: 0, msg: { k: key } });
-  await chrome.storage.local.set({ run });
+  run.elapsedMs += run.startedAt ? Math.max(0, (run.heartbeat || Date.now()) - run.startedAt) : 0;
+  Object.assign(run, { status: 'paused', startedAt: 0, msg: { k: key } });
+  await chrome.storage.local.set({ progress: run });
 }
 
 chrome.tabs.onRemoved.addListener(async tabId => {
-  const { run } = await chrome.storage.local.get('run');
+  const { progress: run } = await chrome.storage.local.get('progress');
   if (run?.status === 'running' && run.tabId === tabId) markInterrupted('m_tab_closed');
 });
 
 async function checkStale() {
-  const { run } = await chrome.storage.local.get('run');
+  const { progress: run } = await chrome.storage.local.get('progress');
   if (run?.status === 'running' && Date.now() - (run.heartbeat || 0) > STALE_MS) markInterrupted('m_interrupted');
   else setBadge(run);
 }
 
 chrome.runtime.onStartup.addListener(checkStale);
-chrome.runtime.onInstalled.addListener(checkStale);
+chrome.runtime.onInstalled.addListener(async () => {
+  await chrome.storage.local.remove(['run', 'seen']);   // storage keys used before 1.1.0
+  checkStale();
+});

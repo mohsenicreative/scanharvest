@@ -34,7 +34,7 @@ Sie wurde für den Unterricht gebaut: Studierende installieren sie einmal, klick
 
 - **Ein Klick:** Popup öffnen und *Fab Megascans öffnen & starten* klicken. Keine Konsole, kein Skript zum Einfügen.
 - **Keine Passwörter:** Läuft in dem Fab-Tab, in dem du schon angemeldet bist. Zugangsdaten oder Tokens werden nie gelesen, gespeichert oder gesendet.
-- **Rücksichtsvolles Tempo:** Mindestens 1,2 s zwischen zwei Elementen, jedes wird von Fab bestätigt. Bei *zu vielen Anfragen* wird gebremst, bei Wiederholung pausiert.
+- **Rücksichtsvolles Tempo:** Mindestens 0,6 s zwischen zwei Elementen, jedes wird von Fab bestätigt. Bei *zu vielen Anfragen* wird gebremst, bei Wiederholung pausiert.
 - **Pausieren und fortsetzen:** Der Fortschritt wird lokal gespeichert. Browser schließen, später wiederkommen, Fortsetzen klicken.
 - **Sicherheitsprüfungen:** Nur *Free*-Einträge von Quixel Megascans werden hinzugefügt; was du schon hast, wird übersprungen.
 - **6 Sprachen:** English, فارسی (rechts nach links), Français, Deutsch, Español und 中文, per Flaggen-Button wählbar.

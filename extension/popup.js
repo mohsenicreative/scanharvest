@@ -136,10 +136,10 @@ function renderActions() {
     return;
   }
 
-  const hasProgress = run && (run.confirmed + run.alreadyOwned + run.failed.length) > 0;
+  const hasProgress = run && (run.added + run.owned + run.retry.length) > 0;
   let label = t('btn_start'), icon = 'play';
   if (status === 'finished') {
-    [label, icon] = run.failed.length ? [t('btn_retry', { n: num(run.failed.length) }), 'rotateCcw'] : [t('btn_check_again'), 'refresh'];
+    [label, icon] = run.retry.length ? [t('btn_retry', { n: num(run.retry.length) }), 'rotateCcw'] : [t('btn_check_again'), 'refresh'];
   } else if (hasProgress) {
     label = t('btn_resume');
   }
@@ -156,27 +156,27 @@ function renderActions() {
 
 function render() {
   const status = effectiveStatus();
-  const r = run || { confirmed: 0, alreadyOwned: 0, failed: [], elapsedMs: 0, sessionStart: 0, sessionDone: 0, total: null };
+  const r = run || { added: 0, owned: 0, retry: [], elapsedMs: 0, startedAt: 0, sessionCount: 0, total: null };
 
   $('pill').className = `pill ${status}`;
   $('pill').innerHTML = '<span class="dot"></span>';
   $('pill').append(document.createTextNode(t(`status_${status}`)));
 
-  $('confirmed').textContent = num(r.confirmed);
-  $('owned').textContent = num(r.alreadyOwned);
-  $('failed').textContent = num(r.failed.length);
+  $('confirmed').textContent = num(r.added);
+  $('owned').textContent = num(r.owned);
+  $('failed').textContent = num(r.retry.length);
 
-  const live = status === 'running' && r.sessionStart;
-  $('time').textContent = fmtTime(r.elapsedMs + (live ? Date.now() - r.sessionStart : 0));
+  const live = status === 'running' && r.startedAt;
+  $('time').textContent = fmtTime(r.elapsedMs + (live ? Date.now() - r.startedAt : 0));
 
-  const done = r.confirmed + r.alreadyOwned + r.failed.length;
+  const done = r.added + r.owned + r.retry.length;
   const bar = $('bar').parentElement;
   bar.classList.toggle('indeterminate', !!live && !r.total);
   $('bar').style.width = r.total ? `${Math.min(100, done / r.total * 100).toFixed(1)}%` : (status === 'finished' ? '100%' : '');
 
   let eta = '—';
-  if (live && r.total && r.sessionDone >= 5) {
-    const perItem = (Date.now() - r.sessionStart) / r.sessionDone;
+  if (live && r.total && r.sessionCount >= 5) {
+    const perItem = (Date.now() - r.startedAt) / r.sessionCount;
     eta = fmtTime(Math.max(0, r.total - done) * perItem);
   }
   $('eta').textContent = eta;
@@ -194,9 +194,40 @@ function render() {
   warn.hidden = !warning;
   $('warnText').textContent = warning;
 
-  $('copy').disabled = !r.failed.length;
+  $('copy').disabled = !r.retry.length;
   $('reset').disabled = status === 'running' || !run;
   renderActions();
+}
+
+// ------------------------------------------------------- smooth accordion --
+
+/** Animate a <details> element open and closed instead of letting it snap. */
+function smoothDetails(details) {
+  const summary = details.querySelector('summary');
+  const body = details.querySelector('.tips-body');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const timing = { duration: still ? 0 : 280, easing: 'cubic-bezier(.2, .8, .2, 1)' };
+  let running = null;
+
+  summary.addEventListener('click', event => {
+    event.preventDefault();
+    running?.cancel();
+    // A closed <details> still reports its content's height, so start opening from 0.
+    const from = details.open ? `${body.getBoundingClientRect().height}px` : '0px';
+    if (!details.open || !details.classList.contains('expanded')) {
+      details.open = true;
+      details.classList.add('expanded');
+      running = body.animate({ height: [from, `${body.scrollHeight}px`], opacity: [0, 1] }, timing);
+      running.onfinish = () => {
+        running = null;
+        details.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'nearest' });
+      };
+    } else {
+      details.classList.remove('expanded');
+      running = body.animate({ height: [from, '0px'], opacity: [1, 0] }, timing);
+      running.onfinish = () => { running = null; details.open = false; };
+    }
+  });
 }
 
 // ------------------------------------------------------------------- init --
@@ -205,17 +236,18 @@ async function init() {
   await I18N.load();
   paintIcons();
   $('langChevron').innerHTML = ICONS.svg('chevronDown', 14);
+  smoothDetails(document.querySelector('.tips'));
 
   [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   const url = tab?.url || '';
   if (isCatalogUrl(url)) tabState = (await send(tab.id, 'ping')) ? 'catalog' : 'catalog-unready';
   else if (url.startsWith('https://www.fab.com/')) tabState = 'fab';
 
-  ({ run } = await chrome.storage.local.get('run'));
+  ({ progress: run } = await chrome.storage.local.get('progress'));
   applyLanguage();
 
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area === 'local' && changes.run) { run = changes.run.newValue; render(); }
+    if (area === 'local' && changes.progress) { run = changes.progress.newValue; render(); }
   });
   setInterval(render, 1000);
 
@@ -225,13 +257,13 @@ async function init() {
 
   $('reset').addEventListener('click', async () => {
     if (!confirm(t('reset_confirm'))) return;
-    await chrome.storage.local.remove(['run', 'seen', 'autostart']);
+    await chrome.storage.local.remove(['progress', 'done', 'autostart']);
     run = null;
     render();
   });
 
   $('copy').addEventListener('click', async () => {
-    const lines = (run?.failed || []).map(item => `${item.title}\t${item.url}\t${item.reason}`);
+    const lines = (run?.retry || []).map(item => `${item.title}\t${item.url}\t${item.reason}`);
     await navigator.clipboard.writeText(lines.join('\n'));
     $('copyText').textContent = t('copied');
     setTimeout(() => { $('copyText').textContent = t('copy_failed'); }, 1500);

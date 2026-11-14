@@ -1,0 +1,26 @@
+Epic made the whole Quixel Megascans collection free on Fab, but every asset still has to be added to your library one at a time, and there are thousands of them. Megascans Claimer does the clicking for you.
+
+HOW IT WORKS
+Open the extension and click "Open Fab Megascans & start". The Free Quixel Megascans page opens with a progress panel on top. For each free listing you don't own yet, the extension presses Fab's own "Add to My Library" button and waits until Fab confirms it before moving on. You can watch every step.
+
+FEATURES
+• One click: no console and no scripts to paste
+• No passwords: runs in the Fab tab you're already signed in to, and never reads or sends your login
+• Polite pace: a short gap between clicks, slows down when Fab asks, and pauses itself if Fab keeps saying "too many requests"
+• Pause and resume at any time; progress survives browser restarts
+• Only claims listings by Quixel Megascans that are priced Free, and skips what you already own
+• Live counters, elapsed time, a list of items to retry, a toolbar badge and notifications
+• Interface in English, Persian (right-to-left), French, German, Spanish and Chinese
+
+TIPS
+• Sign in at fab.com first.
+• On the Megascans page, open User preferences and turn off "Show products in My Library". Runs get much faster.
+• Keep the Fab tab visible (its own window works well). A full run takes a few hours.
+• The extension adds items to your library. Download what you need later from Fab, Unreal Engine or Bridge.
+
+PRIVACY
+No data collection, no analytics, no remote code. Progress is stored only on your computer.
+
+Free and open source: https://github.com/mohsenicreative/megascans-claimer
+
+Megascans Claimer is an independent tool and is not affiliated with or endorsed by Epic Games, Fab or Quixel. Epic hasn't published a rule for or against helper tools like this. The extension only does what you could do by hand, at a calm pace. Use it at your own discretion.

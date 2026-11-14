@@ -1,0 +1,26 @@
+Epic a rendu gratuite toute la collection Quixel Megascans sur Fab, mais chaque ressource doit encore être ajoutée une par une à votre bibliothèque, et il y en a des milliers. Megascans Claimer clique à votre place.
+
+FONCTIONNEMENT
+Ouvrez l'extension et cliquez sur « Ouvrir Fab Megascans et commencer ». La page Quixel Megascans gratuits s'ouvre avec un panneau de progression. Pour chaque élément gratuit que vous ne possédez pas encore, l'extension appuie sur le bouton « Add to My Library » de Fab et attend la confirmation de Fab avant de passer au suivant. Vous voyez chaque étape.
+
+FONCTIONNALITÉS
+• Un clic : pas de console, pas de script à coller
+• Aucun mot de passe : fonctionne dans l'onglet Fab où vous êtes connecté, sans jamais lire ni envoyer vos identifiants
+• Rythme respectueux : court délai entre les clics, ralentit à la demande de Fab et se met en pause si Fab répète « trop de requêtes »
+• Pause et reprise à tout moment ; la progression survit au redémarrage du navigateur
+• N'ajoute que les éléments gratuits de Quixel Megascans et ignore ce que vous possédez déjà
+• Compteurs en direct, durée, liste des éléments à réessayer, badge et notifications
+• Interface en anglais, persan (de droite à gauche), français, allemand, espagnol et chinois
+
+CONSEILS
+• Connectez-vous d'abord sur fab.com.
+• Sur la page Megascans, ouvrez User preferences et désactivez « Show products in My Library » : c'est bien plus rapide.
+• Gardez l'onglet Fab visible (idéalement dans sa propre fenêtre). Une exécution complète prend quelques heures.
+• L'extension ajoute les éléments à votre bibliothèque. Téléchargez-les ensuite depuis Fab, Unreal Engine ou Bridge.
+
+CONFIDENTIALITÉ
+Aucune collecte de données, aucune statistique, aucun code distant. La progression reste sur votre ordinateur.
+
+Gratuit et open source : https://github.com/mohsenicreative/megascans-claimer
+
+Megascans Claimer est un outil indépendant, non affilié à Epic Games, Fab ou Quixel ni approuvé par eux. Epic n'a publié aucune règle pour ou contre ce type d'outil. L'extension fait seulement ce que vous feriez à la main, à un rythme calme. Vous l'utilisez à votre discrétion.

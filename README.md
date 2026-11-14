@@ -37,7 +37,7 @@ It was built for a classroom: students install it once, click one button, and le
 |---|---|
 | **One click** | Open the popup and click *Open Fab Megascans & start*. No console, no scripts to paste. |
 | **No passwords** | It runs in the Fab tab you are already signed in to. It never reads, stores or sends your login or tokens. |
-| **Polite pace** | It leaves at least 1.2 s between claims and waits for Fab to confirm each one. It backs off when Fab says *too many requests* and pauses itself if that keeps happening. |
+| **Polite pace** | It leaves at least 0.6 s between clicks and waits for Fab to confirm each one. It backs off when Fab says *too many requests* and pauses itself if that keeps happening. |
 | **Pause and resume** | Progress is saved locally. Close the browser, come back later, and click Resume. |
 | **Safe checks** | It only claims listings that are by Quixel Megascans and priced *Free*, and skips anything already in your library. |
 | **6 languages** | English, فارسی (right-to-left), Français, Deutsch, Español and 中文, chosen with flag buttons in the popup. |
@@ -76,16 +76,17 @@ Works in **Google Chrome** and **Microsoft Edge** (version 116 or newer) on Wind
 
 ```
 popup ──start──▶ content script on www.fab.com
-                   │ opens the Free Quixel Megascans catalog in a workspace frame
-                   │ for each card not yet owned:
-                   │   hover → click "Add to My Library" → wait for "Saved in My Library"
-                   │   (fallback: open the listing page, check "Free" + Quixel seller, click, confirm)
-                   │ scrolls to load more, reloads the catalog every 96 items, sweeps once more at the end
+                   │ Workspace: opens the Free Quixel Megascans catalog in a frame (load events)
+                   │ Session:   harvests visible free listings that aren't owned into a queue
+                   │   per item: hover → click "Add to My Library" → wait for "Saved in My Library"
+                   │   fallback: open the listing page, check "Free" + Quixel seller, click, confirm
+                   │ queue empty → ask Fab's infinite scroll for more → one last pass over a fresh catalog
+                   │ Pacer:     adaptive gap between clicks; waits are event-driven (MutationObserver)
                    └─ saves counters + processed URLs in chrome.storage.local
 background worker ── toolbar badge, notifications, detects closed/interrupted runs
 ```
 
-Pacing rules: at least 1.2 s between claims, and the gap grows when Fab is slow. On a *too many requests* alert it waits 60 s and then 120 s, and on the third alert it pauses and asks you to come back in about an hour. After 4 unconfirmed claims in a row it also pauses.
+Pacing rules: at least 0.6 s between clicks, and the gap grows when Fab is slow. On a *too many requests* alert it waits 60 s and then 120 s, and on the third alert it pauses and asks you to come back in about an hour. After 4 unconfirmed claims in a row it also pauses.
 
 ## Privacy and permissions
 
@@ -95,7 +96,7 @@ Pacing rules: at least 1.2 s between claims, and the gap grows when Fab is slow.
 | `storage` | To remember progress and your language, only on your computer. |
 | `notifications` | To tell you when a run finishes or pauses. |
 
-There are no analytics, no remote code and no servers. Nothing leaves your browser except the normal requests Fab's own page makes.
+There are no analytics, no remote code and no servers. Nothing leaves your browser except the normal requests Fab's own page makes. Full [privacy policy](https://mohsenicreative.github.io/megascans-claimer/privacy.html).
 
 ## A note on rules
 
@@ -126,7 +127,8 @@ extension/            the extension (load this folder unpacked)
   icons.js            Lucide icons, inlined as SVG
   flags.js            flag artwork, inlined as SVG
   _locales/           store name/description per language
-docs/                 GitHub Pages student guide (index.html, i18n-guide.js) and images
+docs/                 GitHub Pages student guide (index.html, i18n-guide.js), privacy.html and images
+store/                Chrome Web Store kit: listing texts, dashboard answers, art.html + render.ps1
 tools/                popup-preview.html and overlay-preview.html for design work and screenshots
 build.ps1             syncs docs/assets and builds dist/MegascansClaimer.zip
 .github/workflows/    CI checks and the tag-triggered release
@@ -158,7 +160,7 @@ Add the language to `LANGS` and add a dictionary in `extension/i18n.js`, a flag 
 pwsh -File build.ps1
 ```
 
-This creates `dist/MegascansClaimer.zip` locally. To publish a release, bump the version in `extension/manifest.json`, update `CHANGELOG.md`, commit, then push a signed tag:
+This creates `dist/MegascansClaimer.zip` (for *Load unpacked*) and `dist/MegascansClaimer-webstore.zip` (for the Chrome Web Store and Edge Add-ons). To publish on the store, follow [store/README.md](store/README.md). To publish a release, bump the version in `extension/manifest.json`, update `CHANGELOG.md`, commit, then push a signed tag:
 
 ```bash
 git tag -s v1.0.1 -m "v1.0.1"

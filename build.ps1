@@ -19,8 +19,15 @@ Copy-Item (Join-Path $root 'LICENSE'), (Join-Path $root 'THIRD_PARTY_NOTICES.md'
 
 $zip = Join-Path $dist 'MegascansClaimer.zip'
 if (Test-Path $zip) { Remove-Item -Force $zip }
-Compress-Archive -Path $staging -DestinationPath $zip   # one top-level "MegascansClaimer" folder
+Compress-Archive -Path $staging -DestinationPath $zip   # one top-level "MegascansClaimer" folder (Load unpacked)
+
+# Chrome Web Store / Edge Add-ons need manifest.json at the root of the zip.
+$store = Join-Path $dist 'MegascansClaimer-webstore.zip'
+if (Test-Path $store) { Remove-Item -Force $store }
+Compress-Archive -Path (Join-Path $staging '*') -DestinationPath $store
 Remove-Item -Recurse -Force $staging
 
 $version = (Get-Content (Join-Path $ext 'manifest.json') -Raw | ConvertFrom-Json).version
-Write-Host "Built $zip (v$version)"
+Write-Host "Built v$version"
+Write-Host "  $zip            (students: extract + Load unpacked)"
+Write-Host "  $store   (upload to Chrome Web Store / Edge Add-ons)"

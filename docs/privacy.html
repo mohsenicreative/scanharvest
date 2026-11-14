@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Megascans Claimer</title>
+<meta name="description" content="Privacy policy for the Megascans Claimer browser extension.">
+<link rel="icon" href="images/icon-128.png">
+<style>
+  :root { --bg: #05060a; --surface: #0c0f18; --line: rgba(148,163,255,.12); --text: #eef0fa; --muted: #8e95ad; --accent: #5b82ff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.7 "Inter", "Segoe UI", system-ui, sans-serif; }
+  body::before { content: ""; position: fixed; inset: -300px 0 auto; height: 600px; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(61,107,255,.28), transparent); }
+  main { position: relative; max-width: 760px; margin: 0 auto; padding: 56px 16px 80px; }
+  a { color: var(--accent); }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 700; }
+  .brand img { width: 32px; height: 32px; border-radius: 9px; }
+  h1 { font-size: clamp(30px, 5vw, 42px); letter-spacing: -1px; line-height: 1.15; margin: 28px 0 6px; }
+  .date { color: var(--muted); margin: 0 0 28px; }
+  h2 { font-size: 20px; margin: 34px 0 8px; }
+  p, li { color: #c9cee0; }
+  .card { padding: 18px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  th, td { text-align: start; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 14px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: .9em; background: rgba(148,163,255,.1); padding: 1px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="./"><img src="images/icon-128.png" alt="">Megascans Claimer</a>
+  <h1>Privacy Policy</h1>
+  <p class="date">Effective 14 November 2026 · applies to version 1.1.0 and later</p>
+
+  <div class="card">
+    <strong>Short version:</strong> Megascans Claimer does not collect, sell, share or transmit any personal data.
+    Everything it stores stays in your own browser.
+  </div>
+
+  <h2>What the extension does</h2>
+  <p>Megascans Claimer adds free Quixel Megascans listings on <a href="https://www.fab.com">fab.com</a> to your Fab library by pressing Fab's own "Add to My Library" button in a tab where you are already signed in. It has a single purpose and only runs on <code>https://www.fab.com/*</code>.</p>
+
+  <h2>Data we collect</h2>
+  <p>None. The developer operates no servers, analytics, tracking pixels, crash reporting or advertising. The extension contains no remote code.</p>
+
+  <h2>Data stored on your device</h2>
+  <p>To let you pause and resume, the extension keeps the following in <code>chrome.storage.local</code> on your computer. It never leaves your browser and is removed when you click "Start over" or uninstall the extension.</p>
+  <table>
+    <tr><th>Item</th><th>Why</th></tr>
+    <tr><td>Counters (added, already owned, need retry, elapsed time) and the current status message</td><td>Shown in the popup and progress panel</td></tr>
+    <tr><td>Addresses of Fab listings already processed, and titles of listings that need a retry</td><td>To skip finished items and retry failed ones</td></tr>
+    <tr><td>Your chosen interface language</td><td>To show the interface in that language</td></tr>
+  </table>
+
+  <h2>Your Fab and Epic Games account</h2>
+  <p>The extension never reads, stores or sends passwords, cookies, tokens or account details. Requests to Fab are the same ones Fab's own page makes when you click its buttons, sent directly from your browser to Fab. Your use of Fab is governed by Epic Games' own terms and privacy policy.</p>
+
+  <h2>Permissions</h2>
+  <table>
+    <tr><th>Permission</th><th>Used for</th></tr>
+    <tr><td><code>https://www.fab.com/*</code></td><td>Running on Fab's pages to press Fab's own buttons and show the progress panel</td></tr>
+    <tr><td><code>storage</code></td><td>Saving progress and language locally, as described above</td></tr>
+    <tr><td><code>notifications</code></td><td>Telling you when a run finishes or pauses</td></tr>
+  </table>
+
+  <h2>Children</h2>
+  <p>The extension collects no data from anyone, including children.</p>
+
+  <h2>Changes</h2>
+  <p>Any change to this policy will be published on this page and noted in the project's <a href="https://github.com/mohsenicreative/megascans-claimer/blob/main/CHANGELOG.md">changelog</a>.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or concerns: open an issue at <a href="https://github.com/mohsenicreative/megascans-claimer/issues">github.com/mohsenicreative/megascans-claimer/issues</a>.</p>
+
+  <p style="margin-top:40px;color:var(--muted);font-size:14px">Megascans Claimer is an independent, open-source project and is not affiliated with Epic Games, Fab or Quixel.</p>
+</main>
+</body>
+</html>

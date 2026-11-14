@@ -1,0 +1,119 @@
+<!doctype html>
+<!--
+  Chrome Web Store artwork. Rendered to PNG by render.ps1 (serve the repo root on :5178 first).
+  ?v=shot1 | shot2 | shot3 | shot4  → 1280×800 screenshots
+  ?v=promo                          → 440×280 small promo tile (laid out at 880×560, rendered at 0.5×)
+  ?v=marquee                        → 1400×560 marquee
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Store art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --text: #eef0fa; --muted: #8e95ad; --accent: #3d6bff; --peri: #8b9cff; --line: rgba(148,163,255,.16); }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { background: #05060a; color: var(--text); font-family: "Inter", "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow: hidden; }
+  .canvas { position: relative; overflow: hidden; width: 1280px; height: 800px; }
+  .canvas::before { content: ""; position: absolute; left: 50%; top: -420px; width: 1500px; height: 1000px; transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(61,107,255,.5), rgba(61,107,255,.08) 60%, transparent); }
+  .canvas::after { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(148,163,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,255,.05) 1px, transparent 1px);
+    background-size: 64px 64px; mask-image: radial-gradient(70% 70% at 50% 25%, #000 25%, transparent 75%); }
+  .canvas > * { position: relative; z-index: 1; }
+  .grad { background: linear-gradient(90deg, #5b82ff, #8b9cff 55%, #c0c9ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; }
+  .brand img { width: 40px; height: 40px; border-radius: 11px; box-shadow: 0 8px 26px rgba(61,107,255,.45); }
+  .window { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #0a0c14; box-shadow: 0 40px 100px rgba(20,40,140,.45); }
+  .window .bar { display: flex; gap: 6px; padding: 10px 13px; border-bottom: 1px solid rgba(148,163,255,.08); background: #0c0f18; }
+  .window .bar i { width: 9px; height: 9px; border-radius: 50%; background: #2a2f42; }
+  .window img, .popup img { display: block; width: 100%; }
+  .popup { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.65), 0 0 0 1px rgba(91,130,255,.15); }
+  h1 { font-size: 54px; line-height: 1.06; letter-spacing: -1.8px; font-weight: 800; }
+  .sub { color: var(--muted); font-size: 20px; line-height: 1.5; margin-top: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-size: 15px; font-weight: 600;
+    background: rgba(61,107,255,.12); border: 1px solid rgba(91,130,255,.32); color: #cdd6ff; }
+  .chip .icon { color: var(--peri); }
+  .icon { display: block; flex: none; }
+
+  /* layouts */
+  .split { display: grid; grid-template-columns: 430px 1fr; gap: 40px; align-items: center; padding: 64px 0 64px 72px; height: 100%; }
+  .center { text-align: center; padding-top: 70px; }
+  .center h1 { font-size: 58px; }
+  .stage { position: relative; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { padding: 22px; border-radius: 18px; border: 1px solid var(--line);
+    background: radial-gradient(120% 90% at 0% 0%, rgba(61,107,255,.12), transparent 55%), linear-gradient(180deg, #121625, #0c0f18); }
+  .card .ico { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; color: var(--peri);
+    background: rgba(61,107,255,.14); border: 1px solid rgba(91,130,255,.28); margin-bottom: 14px; }
+  .card h3 { font-size: 20px; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+  .flags { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .flag-pill { display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 9px; border-radius: 12px; font-size: 16px; font-weight: 600;
+    background: #0f1220; border: 1px solid var(--line); }
+  .flag-pill .f { width: 28px; height: 19px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
+  .flag { width: 100%; height: 100%; display: block; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="../../extension/icons.js"></script>
+<script src="../../extension/flags.js"></script>
+<script>
+  const v = new URLSearchParams(location.search).get('v') || 'shot1';
+  const img = p => `../../docs/images/${p}`;
+  const icon = (n, s = 18) => ICONS.svg(n, s);
+  const brand = `<div class="brand"><img src="${img('icon-128.png')}" alt="">Megascans Claimer</div>`;
+  const chip = (i, t) => `<span class="chip">${icon(i, 16)}${t}</span>`;
+  const win = src => `<div class="window"><div class="bar"><i></i><i></i><i></i></div><img src="${img(src)}" alt=""></div>`;
+  const langs = [['en','English'],['fa','فارسی'],['fr','Français'],['de','Deutsch'],['es','Español'],['zh','中文']];
+  const views = {
+    shot1: `<div class="canvas center">
+        ${brand.replace('class="brand"', 'class="brand" style="justify-content:center"')}
+        <h1 style="margin-top:26px">Every free Megascans asset,<br><span class="grad">added to your Fab library.</span></h1>
+        <p class="sub">One click. Fab's own button. A calm, visible pace.</p>
+        <div class="stage" style="width:940px;margin:44px auto 0">${win('panel-en.png')}
+          <div class="popup" style="position:absolute;width:236px;right:-90px;top:70px">${`<img src="${img('popup-en.png')}" alt="">`}</div></div>
+      </div>`,
+    shot2: `<div class="canvas"><div class="split">
+        <div>${brand}<h1 style="margin-top:30px">Watch it work.<br><span class="grad">Pause any time.</span></h1>
+          <p class="sub">A full-screen panel shows Fab, live counters and status. Progress is saved, so you can close the browser and resume tomorrow.</p>
+          <div class="chips">${chip('circleCheck','Confirms every item')}${chip('pause','Pause & resume')}${chip('rotateCcw','Retry list')}</div></div>
+        <div class="stage" style="margin-right:-260px">${win('panel-en.png')}</div>
+      </div></div>`,
+    shot3: `<div class="canvas"><div class="split" style="grid-template-columns:470px 1fr">
+        <div>${brand}<h1 style="margin-top:30px">Speaks your<br><span class="grad">language.</span></h1>
+          <p class="sub">Pick a flag. The popup, the panel and notifications switch instantly, including right-to-left Persian.</p>
+          <div class="flags">${langs.map(([c,n]) => `<span class="flag-pill"><span class="f">${FLAGS[c]}</span>${n}</span>`).join('')}</div></div>
+        <div class="stage" style="display:flex;gap:28px;align-items:flex-start">
+          <div class="popup" style="width:300px">${`<img src="${img('popup-languages.png')}" alt="">`}</div>
+          <div class="popup" style="width:300px;margin-top:70px">${`<img src="${img('popup-fa.png')}" alt="">`}</div></div>
+      </div></div>`,
+    shot4: `<div class="canvas"><div class="split" style="grid-template-columns:1fr 330px;padding:64px 72px">
+        <div>${brand}<h1 style="margin-top:28px">Polite, private,<br><span class="grad">open source.</span></h1>
+          <div class="cards" style="margin-top:34px">
+            <div class="card"><div class="ico">${icon('shield',22)}</div><h3>No passwords</h3><p>Runs in the Fab tab you're signed in to. Never reads your login.</p></div>
+            <div class="card"><div class="ico">${icon('gauge',22)}</div><h3>Polite pace</h3><p>Slows down when Fab asks and pauses itself on repeated limits.</p></div>
+            <div class="card"><div class="ico">${icon('library',22)}</div><h3>Only free Quixel items</h3><p>Checks the price and seller, and skips what you already own.</p></div>
+            <div class="card"><div class="ico">${icon('eyeOff',22)}</div><h3>No data collected</h3><p>No analytics, no servers, no remote code. Progress stays on your computer.</p></div>
+          </div></div>
+        <div class="popup">${`<img src="${img('popup-en.png')}" alt="">`}</div>
+      </div></div>`,
+    promo: `<div class="canvas" style="width:880px;height:560px;display:flex;flex-direction:column;justify-content:center;padding:0 64px">
+        <div class="brand" style="font-size:34px;gap:18px"><img src="${img('icon-128.png')}" style="width:76px;height:76px;border-radius:20px" alt="">Megascans Claimer</div>
+        <h1 style="font-size:66px;margin-top:30px">Free Megascans,<br><span class="grad">claimed for you.</span></h1>
+      </div>`,
+    marquee: `<div class="canvas" style="width:1400px;height:560px"><div class="split" style="grid-template-columns:560px 1fr;padding:0 0 0 80px">
+        <div>${brand}<h1 style="margin-top:26px;font-size:58px">Your whole Megascans library,<br><span class="grad">claimed for you.</span></h1>
+          <div class="chips">${chip('shield','No passwords')}${chip('gauge','Polite pace')}${chip('globe','6 languages')}</div></div>
+        <div class="stage" style="margin-right:-200px;margin-top:40px">${win('panel-en.png')}</div>
+      </div></div>`
+  };
+  document.getElementById('root').innerHTML = views[v];
+</script>
+</body>
+</html>
