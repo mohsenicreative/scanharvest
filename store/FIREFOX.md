@@ -55,6 +55,28 @@ The temporary add-on is removed when Firefox restarts. That's normal.
 - **Icon:** taken from the package.
 - **Screenshots:** upload `art/out/screenshot-1.png` … `screenshot-4.png` (1280×800). AMO accepts these as is.
 
+| Screenshot | Caption |
+|---|---|
+| screenshot-1.png | One click starts it: ScanHarvest presses Fab's own "Add to My Library" button for every free Quixel Megascans listing you don't own yet. |
+| screenshot-2.png | A full-screen progress panel shows Fab, live counters and status. Pause at any time; progress is saved and resumes later. |
+| screenshot-3.png | Pick your language with a flag: English, Persian (right-to-left), French, German, Spanish or Chinese. |
+| screenshot-4.png | No passwords, no data collection, no remote code. It only claims free Quixel listings and slows down when Fab asks. |
+
+## 3b. Other listing fields
+
+- **Tags:** pick from AMO's list: *productivity*, plus *download manager* if it's offered.
+- **Contributions URL:** leave empty. AMO only accepts donation services (PayPal, Ko-fi, Patreon, GitHub Sponsors, Buy Me a Coffee, Liberapay, Open Collective).
+- **Developer comments:**
+
+> Tips for a smooth run:
+> • Sign in at fab.com first. If Firefox asks, click "Allow access to fab.com" in the popup.
+> • On the Megascans page, open User preferences and turn off "Show products in My Library". Already-owned items are then hidden, and runs get much faster.
+> • Keep the Fab tab visible (its own window works well). Firefox slows down hidden tabs, and Fab only loads more results while its list is on screen.
+> • A full run takes a few hours. You can pause and resume at any time, and "Retry" handles anything Fab didn't confirm.
+> • ScanHarvest adds items to your Fab library. It doesn't download files; get those later from Fab, Unreal Engine or Bridge.
+>
+> ScanHarvest is free, open source and independent; it isn't affiliated with Epic Games, Fab or Quixel. Problems or ideas: https://github.com/mohsenicreative/scanharvest/issues
+
 ## 4. Submit
 
 - Listed add-ons are signed straight away. Mozilla's review can happen before or after it goes public; first reviews usually take from a few hours to a few days.
