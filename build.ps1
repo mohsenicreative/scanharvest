@@ -25,9 +25,19 @@ Compress-Archive -Path $staging -DestinationPath $zip   # one top-level "ScanHar
 $store = Join-Path $dist 'ScanHarvest-webstore.zip'
 if (Test-Path $store) { Remove-Item -Force $store }
 Compress-Archive -Path (Join-Path $staging '*') -DestinationPath $store
-Remove-Item -Recurse -Force $staging
+
+# Firefox Add-ons (AMO): same code, Firefox manifest.
+$fxStaging = Join-Path $dist 'ScanHarvest-firefox'
+if (Test-Path $fxStaging) { Remove-Item -Recurse -Force $fxStaging }
+Copy-Item $staging $fxStaging -Recurse
+node (Join-Path $root 'tools/firefox-manifest.mjs') $fxStaging | Out-Null
+$firefox = Join-Path $dist 'ScanHarvest-firefox.zip'
+if (Test-Path $firefox) { Remove-Item -Force $firefox }
+Compress-Archive -Path (Join-Path $fxStaging '*') -DestinationPath $firefox
+Remove-Item -Recurse -Force $staging, $fxStaging
 
 $version = (Get-Content (Join-Path $ext 'manifest.json') -Raw | ConvertFrom-Json).version
 Write-Host "Built v$version"
 Write-Host "  $zip            (students: extract + Load unpacked)"
 Write-Host "  $store   (upload to Chrome Web Store / Edge Add-ons)"
+Write-Host "  $firefox   (upload to addons.mozilla.org)"

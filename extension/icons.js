@@ -34,7 +34,22 @@ globalThis.ICONS = (() => {
   };
 
   const svg = (name, size = 16, extra = '') =>
-    `<svg class="icon ${extra}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[name] || ''}</svg>`;
+    `<svg xmlns="http://www.w3.org/2000/svg" class="icon ${extra}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[name] || ''}</svg>`;
 
-  return { svg, names: Object.keys(P) };
+  // DOM builders, so bundled markup is parsed rather than assigned through innerHTML.
+  const parser = new DOMParser();
+  /** Parse an SVG string (an icon or a flag) into an element owned by `doc`. */
+  const svgNode = (markup, doc = document) =>
+    doc.importNode(parser.parseFromString(markup, 'image/svg+xml').documentElement, true);
+  /** Parse bundled HTML (translations with <b>/<code>, panel templates) into a fragment. */
+  function fragment(markup, doc = document) {
+    const parsed = parser.parseFromString(`<!doctype html><body>${markup}</body>`, 'text/html');
+    const out = doc.createDocumentFragment();
+    for (const node of [...parsed.body.childNodes]) out.append(doc.importNode(node, true));
+    return out;
+  }
+  /** Element for a named icon. */
+  const node = (name, size = 16, doc = document) => svgNode(svg(name, size), doc);
+
+  return { svg, node, svgNode, fragment, names: Object.keys(P) };
 })();

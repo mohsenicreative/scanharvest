@@ -36,7 +36,13 @@ jobs:
           cp LICENSE THIRD_PARTY_NOTICES.md build/ScanHarvest/
           (cd build && zip -r -X ../ScanHarvest.zip ScanHarvest)
           (cd build/ScanHarvest && zip -r -X ../../ScanHarvest-webstore.zip .)
-          sha256sum ScanHarvest.zip ScanHarvest-webstore.zip > SHA256SUMS.txt
+          cp -r build/ScanHarvest build/ScanHarvest-firefox
+          node tools/firefox-manifest.mjs build/ScanHarvest-firefox
+          (cd build/ScanHarvest-firefox && zip -r -X ../../ScanHarvest-firefox.zip .)
+          sha256sum ScanHarvest.zip ScanHarvest-webstore.zip ScanHarvest-firefox.zip > SHA256SUMS.txt
+
+      - name: Validate Firefox package
+        run: npx --yes web-ext@10 lint --source-dir build/ScanHarvest-firefox --self-hosted=false
 
       - name: Release notes from CHANGELOG
         run: |
@@ -51,6 +57,7 @@ jobs:
             echo "### Install"
             echo "Download **ScanHarvest.zip**, extract it, open \`chrome://extensions\` or \`edge://extensions\`, turn on Developer mode and choose **Load unpacked**."
             echo "**ScanHarvest-webstore.zip** is the same build packaged for the Chrome Web Store and Edge Add-ons."
+            echo "**ScanHarvest-firefox.zip** is the Firefox build for addons.mozilla.org (Firefox only installs signed add-ons)."
             echo "Step-by-step guide in 6 languages: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
           } >> notes.md
 
@@ -58,7 +65,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" ScanHarvest.zip ScanHarvest-webstore.zip SHA256SUMS.txt \
+          gh release create "$GITHUB_REF_NAME" ScanHarvest.zip ScanHarvest-webstore.zip ScanHarvest-firefox.zip SHA256SUMS.txt \
             --title "ScanHarvest $GITHUB_REF_NAME" \
             --notes-file notes.md \
             --verify-tag

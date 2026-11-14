@@ -7,6 +7,9 @@ const $ = id => document.getElementById(id);
 let run = null;
 let tab = null;
 let tabState = 'other';   // 'other' | 'fab' | 'catalog' | 'catalog-unready'
+// Firefox treats host permissions as optional, so the user may need to grant fab.com access.
+const FAB_ACCESS = { origins: ['https://www.fab.com/*'] };
+let hostAccess = true;
 
 function isCatalogUrl(href) {
   try {
@@ -30,7 +33,7 @@ const isRunning = () => effectiveStatus() === 'running';
 
 function paintIcons(root = document) {
   for (const el of root.querySelectorAll('[data-icon]')) {
-    el.innerHTML = ICONS.svg(el.dataset.icon, el.classList.contains('chev') ? 14 : 15);
+    el.replaceChildren(ICONS.node(el.dataset.icon, el.classList.contains('chev') ? 14 : 15));
   }
 }
 
@@ -39,8 +42,8 @@ function applyLanguage() {
   document.documentElement.lang = info.code;
   document.documentElement.dir = info.dir;
   for (const el of document.querySelectorAll('[data-i18n]')) el.textContent = t(el.dataset.i18n);
-  for (const el of document.querySelectorAll('[data-i18n-html]')) el.innerHTML = t(el.dataset.i18nHtml); // trusted, bundled strings
-  $('langFlag').innerHTML = FLAGS[info.code];
+  for (const el of document.querySelectorAll('[data-i18n-html]')) el.replaceChildren(ICONS.fragment(t(el.dataset.i18nHtml))); // bundled strings
+  $('langFlag').replaceChildren(ICONS.svgNode(FLAGS[info.code]));
   $('langBtn').title = t('language');
   buildLangMenu();
   render();
@@ -53,10 +56,20 @@ function buildLangMenu() {
     const item = document.createElement('button');
     item.setAttribute('role', 'option');
     item.setAttribute('aria-selected', String(lang.code === I18N.lang));
-    item.innerHTML = `<span class="flag-box">${FLAGS[lang.code]}</span><span></span>${lang.code === I18N.lang ? `<span class="check">${ICONS.svg('check', 14)}</span>` : ''}`;
-    item.children[1].textContent = lang.name;
-    item.children[1].lang = lang.code;
-    item.children[1].dir = lang.dir;
+    const flag = document.createElement('span');
+    flag.className = 'flag-box';
+    flag.append(ICONS.svgNode(FLAGS[lang.code]));
+    const name = document.createElement('span');
+    name.textContent = lang.name;
+    name.lang = lang.code;
+    name.dir = lang.dir;
+    item.append(flag, name);
+    if (lang.code === I18N.lang) {
+      const check = document.createElement('span');
+      check.className = 'check';
+      check.append(ICONS.node('check', 14));
+      item.append(check);
+    }
     item.addEventListener('click', async () => {
       toggleMenu(false);
       await I18N.set(lang.code);
@@ -78,8 +91,7 @@ function toggleMenu(open) {
 function button(label, icon, onClick, cls = '') {
   const b = document.createElement('button');
   b.className = `btn ${cls}`.trim();
-  b.innerHTML = ICONS.svg(icon, 16);
-  b.append(document.createTextNode(label));
+  b.append(ICONS.node(icon, 16), document.createTextNode(label));
   b.addEventListener('click', onClick);
   return b;
 }
@@ -118,6 +130,17 @@ async function startHere(fresh = false) {
 function renderActions() {
   const box = $('actions');
   box.replaceChildren();
+  if (!hostAccess) {
+    // permissions.request must run directly inside the click handler (user gesture).
+    box.append(button(t('btn_grant'), 'shield', () => {
+      chrome.permissions.request(FAB_ACCESS).then(granted => {
+        if (!granted) return;
+        if (tab?.id != null) chrome.tabs.reload(tab.id);
+        location.reload();
+      });
+    }, 'primary'));
+    return;
+  }
   const status = effectiveStatus();
   const runTab = run?.tabId;
 
@@ -159,8 +182,9 @@ function render() {
   const r = run || { added: 0, owned: 0, retry: [], elapsedMs: 0, startedAt: 0, sessionCount: 0, total: null };
 
   $('pill').className = `pill ${status}`;
-  $('pill').innerHTML = '<span class="dot"></span>';
-  $('pill').append(document.createTextNode(t(`status_${status}`)));
+  const dot = document.createElement('span');
+  dot.className = 'dot';
+  $('pill').replaceChildren(dot, document.createTextNode(t(`status_${status}`)));
 
   $('confirmed').textContent = num(r.added);
   $('owned').textContent = num(r.owned);
@@ -191,6 +215,7 @@ function render() {
   let warning = '';
   if (status === 'running' && r.hidden) warning = t('warn_hidden');
   else if (tabState === 'catalog-unready' && status !== 'running') warning = t('warn_unready');
+  if (!hostAccess) warning = t('warn_permission');
   warn.hidden = !warning;
   $('warnText').textContent = warning;
 
@@ -235,9 +260,10 @@ function smoothDetails(details) {
 async function init() {
   await I18N.load();
   paintIcons();
-  $('langChevron').innerHTML = ICONS.svg('chevronDown', 14);
+  $('langChevron').replaceChildren(ICONS.node('chevronDown', 14));
   smoothDetails(document.querySelector('.tips'));
 
+  hostAccess = await chrome.permissions.contains(FAB_ACCESS).catch(() => true);
   [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   const url = tab?.url || '';
   if (isCatalogUrl(url)) tabState = (await send(tab.id, 'ping')) ? 'catalog' : 'catalog-unready';

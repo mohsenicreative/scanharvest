@@ -11,7 +11,8 @@
     storage: { local: { get: async k => { const o = {}; for (const key of [].concat(k)) if (store[key] !== undefined) o[key] = store[key]; return o; }, set: async o => Object.assign(store, o), remove: async () => {} },
       onChanged: { addListener() {} } },
     tabs: { query: async () => [{ id: 1, url: q.get('state') === 'none' ? 'https://example.com/' : 'https://www.fab.com/sellers/Quixel%20Megascans?is_free=1' }], sendMessage: async () => ({ ok: true }), update: async () => {}, create: async () => {}, reload: async () => {} },
-    windows: { update: async () => {} }
+    windows: { update: async () => {} },
+    permissions: { contains: async () => !q.has('noperm'), request: async () => true }   // ?noperm shows the Firefox grant state
   };
   window.close = () => {};
 })();

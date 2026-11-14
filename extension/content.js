@@ -485,7 +485,6 @@
     let host, root, wrap, frame;
     const el = {};
     const icon = (name, size = 16) => globalThis.ICONS.svg(name, size);
-    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const t = (k, p) => I18N.t(k, p);
 
     const css = `
@@ -560,8 +559,9 @@
       host = document.createElement('div');
       host.id = 'scanharvest-root';
       root = host.attachShadow({ mode: 'closed' });
-      root.innerHTML = `
-        <style>${css}</style>
+      const style = document.createElement('style');
+      style.textContent = css;
+      root.append(style, globalThis.ICONS.fragment(`
         <div class="wrap">
           <header>
             <div class="logo">${icon('download', 18)}</div>
@@ -584,7 +584,7 @@
           <div class="note">${icon('monitor', 14)}<span data-t="ov_note"></span></div>
         </div>
         <div class="chip" data-el="chip"><span class="dot"></span><span data-el="chipText"></span></div>
-      `;
+      `));
       root.querySelectorAll('[data-el]').forEach(node => { el[node.dataset.el] = node; });
       wrap = root.querySelector('.wrap');
       frame = el.frame;
@@ -600,6 +600,12 @@
       translate();
     }
 
+    function setLabel(button, glyph, text) {
+      const span = document.createElement('span');
+      span.textContent = text;
+      button.replaceChildren(globalThis.ICONS.node(glyph, 15), span);
+    }
+
     function minimize(on) {
       wrap.classList.toggle('min', on);
       el.chip.classList.toggle('show', on);
@@ -612,9 +618,9 @@
       wrap.dir = info.dir;
       el.chip.dir = info.dir;
       root.querySelectorAll('[data-t]').forEach(node => { node.textContent = t(node.dataset.t); });
-      el.hide.innerHTML = `${icon('eyeOff', 15)}<span>${esc(t('ov_hide'))}</span>`;
+      setLabel(el.hide, 'eyeOff', t('ov_hide'));
       el.hide.title = t('ov_hide_title');
-      el.close.innerHTML = `${icon('x', 15)}<span>${esc(t('ov_close'))}</span>`;
+      setLabel(el.close, 'x', t('ov_close'));
       frame.title = t('ov_workspace');
       update();
     }
@@ -623,7 +629,9 @@
       if (!host?.isConnected) return;
       const p = progress;
       el.pill.className = `pill ${p.status}`;
-      el.pill.innerHTML = `<span class="dot"></span>${esc(t(`status_${p.status}`))}`;
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      el.pill.replaceChildren(dot, document.createTextNode(t(`status_${p.status}`)));
       el.added.textContent = I18N.num(p.added);
       el.owned.textContent = I18N.num(p.owned);
       el.retry.textContent = I18N.num(p.retry.length);
@@ -636,7 +644,7 @@
       let label = t('btn_resume'), glyph = 'play';
       if (session) [label, glyph] = [t('btn_pause'), 'pause'];
       else if (p.status === 'finished') [label, glyph] = p.retry.length ? [t('ov_retry'), 'rotateCcw'] : [t('ov_run_again'), 'refresh'];
-      el.toggle.innerHTML = `${icon(glyph, 15)}<span>${esc(label)}</span>`;
+      setLabel(el.toggle, glyph, label);
       el.chipText.textContent = t('ov_chip', { status: t(`status_${p.status}`), n: I18N.num(p.added) });
     }
 

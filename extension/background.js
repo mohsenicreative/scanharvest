@@ -1,5 +1,7 @@
 // ScanHarvest — background worker: toolbar badge, notifications, tab bookkeeping.
-importScripts('i18n.js');
+// Chrome runs this as a service worker (load i18n.js here); Firefox runs it as an
+// event page with i18n.js listed before it in background.scripts.
+if (typeof importScripts === 'function' && !globalThis.I18N) importScripts('i18n.js');
 
 const STALE_MS = 15000; // a "running" state without a heartbeat for this long is treated as interrupted
 
@@ -36,8 +38,7 @@ async function notify(run) {
     type: 'basic',
     iconUrl: 'icons/128.png',
     title: I18N.t(titleKey),
-    message: [I18N.tm(run.msg), counts].filter(Boolean).join('\n'),
-    priority: 1
+    message: [I18N.tm(run.msg), counts].filter(Boolean).join('\n')
   });
 }
 

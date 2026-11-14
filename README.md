@@ -15,7 +15,7 @@
 
 [![Latest release](https://img.shields.io/github/v/release/mohsenicreative/scanharvest?style=flat-square&color=3d6bff&label=release)](https://github.com/mohsenicreative/scanharvest/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-8b9cff?style=flat-square)](LICENSE)
-![Chrome and Edge](https://img.shields.io/badge/Chrome%20%7C%20Edge-MV3-0d1019?style=flat-square)
+![Chrome, Edge and Firefox](https://img.shields.io/badge/Chrome%20%7C%20Edge%20%7C%20Firefox-MV3-0d1019?style=flat-square)
 
 [**Download**](https://github.com/mohsenicreative/scanharvest/releases/latest/download/ScanHarvest.zip) ·
 [**Student guide**](https://mohsenicreative.github.io/scanharvest/) ·
@@ -128,7 +128,7 @@ extension/            the extension (load this folder unpacked)
   flags.js            flag artwork, inlined as SVG
   _locales/           store name/description per language
 docs/                 GitHub Pages student guide (index.html, i18n-guide.js), privacy.html and images
-store/                Chrome Web Store kit: listing texts, dashboard answers, art.html + render.ps1
+store/                Chrome Web Store and Firefox Add-ons kits: listing texts, dashboard answers, art
 tools/                popup-preview.html and overlay-preview.html for design work and screenshots
 build.ps1             syncs docs/assets and builds dist/ScanHarvest.zip
 .github/workflows/    CI checks and the tag-triggered release
@@ -160,7 +160,7 @@ Add the language to `LANGS` and add a dictionary in `extension/i18n.js`, a flag 
 pwsh -File build.ps1
 ```
 
-This creates `dist/ScanHarvest.zip` (for *Load unpacked*) and `dist/ScanHarvest-webstore.zip` (for the Chrome Web Store and Edge Add-ons). To publish on the store, follow [store/README.md](store/README.md). To publish a release, bump the version in `extension/manifest.json`, update `CHANGELOG.md`, commit, then push a signed tag:
+This creates `dist/ScanHarvest.zip` (for *Load unpacked*), `dist/ScanHarvest-webstore.zip` (for the Chrome Web Store and Edge Add-ons) and `dist/ScanHarvest-firefox.zip` (for addons.mozilla.org). To publish, follow [store/README.md](store/README.md) for Chrome and [store/FIREFOX.md](store/FIREFOX.md) for Firefox. To publish a release, bump the version in `extension/manifest.json`, update `CHANGELOG.md`, commit, then push a signed tag:
 
 ```bash
 git tag -s v1.0.1 -m "v1.0.1"

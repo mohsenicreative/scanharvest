@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] - 2026-11-14
+
+### Added
+- Firefox support (Firefox 140+). Releases include `ScanHarvest-firefox.zip` for addons.mozilla.org. It's built from the same code with a Firefox manifest (`tools/firefox-manifest.mjs`): an event-page background, add-on ID `scanharvest@mohsenicreative.github.io`, and a declaration that no data is collected.
+- If Firefox hasn't granted access to fab.com yet, the popup shows an *Allow access to fab.com* button (translated into all six languages).
+- The release workflow validates the Firefox package with `web-ext lint`.
+- Firefox submission guide in `store/FIREFOX.md`.
+
+### Changed
+- The interface is built with DOM APIs and DOMParser instead of `innerHTML`, so Mozilla's linter reports 0 warnings.
+- Notifications no longer pass the Chrome-only `priority` option.
+
 ## [1.2.0] - 2026-11-14
 
 ### Changed
@@ -38,6 +50,7 @@ All notable changes to this project are documented here. The format follows [Kee
 - Toolbar badge and desktop notifications when a run finishes or needs attention.
 - Multilingual student guide (GitHub Pages) and READMEs in six languages.
 
+[1.3.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.3.0
 [1.2.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.2.0
 [1.1.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.1.0
 [1.0.0]: https://github.com/mohsenicreative/scanharvest/releases/tag/v1.0.0
